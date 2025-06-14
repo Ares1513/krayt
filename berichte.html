@@ -1,51 +1,118 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Einsatzberichte – A-23 „Krayt“</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: #000;
-      color: #e0e0e0;
-      font-family: 'Orbitron', sans-serif;
-      padding: 40px;
-      line-height: 1.6;
-    }
-    h1 {
-      color: #ffe81f;
-      text-align: center;
-      text-shadow: 0 0 10px #ffe81faa;
-    }
-    .bericht {
-      margin-bottom: 30px;
-      border: 1px solid #00bfff66;
-      padding: 20px;
-      background-color: rgba(20, 20, 40, 0.75);
-      box-shadow: 0 0 10px #00bfff44;
-    }
-    a {
-      display: block;
-      margin-top: 40px;
-      text-align: center;
-      color: #00bfff;
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Einsatzberichte – A-23 „Krayt“</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background: #000;
+    color: #e0e0e0;
+    font-family: Orbitron, sans-serif;
+    padding: 40px;
+  }
+  h1 {
+    color: #ffe81f;
+    text-align: center;
+  }
+  .bericht {
+    border: 1px solid #00bfff66;
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(20,20,40,0.75);
+  }
+  #form-container {
+    display: none;
+    margin-bottom: 30px;
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+  }
+  button {
+    background: #00bfff;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #login-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #password {
+    font-size: 16px;
+    padding: 8px;
+  }
+</style>
 </head>
 <body>
-  <h1>Einsatzberichte – A-23 „Krayt“</h1>
 
-  <div class="bericht">
-    <h2>22 VSY – Kamino</h2>
-    <p>A-23 wurde aus Stasis reaktiviert, um die Invasion durch die Separatisten abzuwehren. Er neutralisierte zwei Landewellen und übernahm für 37 Minuten die planetare Verteidigung.</p>
-  </div>
+<h1>Einsatzberichte – A-23 „Krayt“</h1>
 
-  <div class="bericht">
-    <h2>21 VSY – Rhen Var</h2>
-    <p>Taktische Initiative: Verzicht auf direkten Angriff. Koordination eines Umgehungsmanövers mit geringer Verlustrate. Missionsziel erreicht.</p>
-  </div>
+<div id="login-container">
+  <input type="password" id="password" placeholder="Passwort eingeben" />
+  <button onclick="checkPassword()">Login</button>
+</div>
 
-  <a href="index.html">⬅ Zurück zur Personalakte</a>
+<div id="form-container">
+  <h2>Neuen Bericht verfassen</h2>
+  <textarea id="bericht-text" placeholder="Bericht eingeben..."></textarea><br />
+  <button onclick="sendeBericht()">Senden</button>
+</div>
+
+<div id="berichte">
+  <!-- Hier werden Berichte angezeigt -->
+</div>
+
+<script>
+  // Passwort für Zugriff
+  const korrektesPasswort = "3515";
+
+  function checkPassword() {
+    const eingabe = document.getElementById("password").value;
+    if (eingabe === korrektesPasswort) {
+      document.getElementById("login-container").style.display = "none";
+      document.getElementById("form-container").style.display = "block";
+      ladeBerichte();
+    } else {
+      alert("Falsches Passwort!");
+    }
+  }
+
+  // Beispielhafte Speicherung lokal (ohne Server)
+  // Hier kannst du z.B. localStorage oder ein Backend verwenden
+  function sendeBericht() {
+    const text = document.getElementById("bericht-text").value.trim();
+    if (!text) return alert("Bitte einen Bericht eingeben.");
+
+    let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
+    berichte.unshift({ text: text, zeit: new Date().toLocaleString() });
+    localStorage.setItem("berichte", JSON.stringify(berichte));
+
+    document.getElementById("bericht-text").value = "";
+    ladeBerichte();
+  }
+
+  function ladeBerichte() {
+    const container = document.getElementById("berichte");
+    container.innerHTML = "";
+    const berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
+
+    if (berichte.length === 0) {
+      container.innerHTML = "<p>Keine Berichte vorhanden.</p>";
+      return;
+    }
+
+    berichte.forEach(e => {
+      const div = document.createElement("div");
+      div.className = "bericht";
+      div.innerHTML = `<small>${e.zeit}</small><p>${e.text}</p>`;
+      container.appendChild(div);
+    });
+  }
+</script>
+
 </body>
 </html>
