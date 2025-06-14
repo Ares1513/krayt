@@ -1,181 +1,204 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<title>PERSONENAKTE – Alpha‑23 “Krayt1”</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet" />
-<style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bewerbung – Alpha-23 „Krayt“</title>
+  <style>
     body {
-        font-family: 'Orbitron', 'Arial', sans-serif;
-        background: #000;
-        color: #e0e0e0;
-        background-image:
-            radial-gradient(2px 2px at 20% 30%, #888 0%, transparent 100%),
-            radial-gradient(1.5px 1.5px at 70% 80%, #666 0%, transparent 100%),
-            radial-gradient(1px 1px at 50% 50%, #aaa 0%, transparent 100%);
-        background-repeat: repeat;
-        background-size: 600px 600px;
-        line-height: 1.6;
-        padding: 40px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: #ffe81f;
-        font-size: 40px;
-        margin-bottom: 10px;
-        text-shadow: 0 0 10px #ffe81faa, 0 0 20px #ffe81faa;
+    header, .tab-content {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
     }
-    .quote {
-        text-align: center;
-        font-style: italic;
-        color: #bbb;
-        margin-bottom: 40px;
+    img {
+      max-width: 100%;
+      height: auto;
     }
-    h2 {
-        background: #ffe81f;
-        color: #000;
-        padding: 8px 14px;
-        border-radius: 3px;
-        font-size: 20px;
-        box-shadow: 0 0 8px #ffe81f77;
-        display: inline-block;
+    h2, h3 {
+      color: #ffe81f;
     }
-    .section {
-        border: 1px solid #00bfff;
-        padding: 24px;
-        margin-bottom: 40px;
-        background: rgba(15, 25, 40, 0.75);
-        box-shadow: 0 0 12px #00bfff55;
+    nav.tabmenu {
+      display: flex;
+      background-color: #1e1e1e;
+      border-bottom: 2px solid #ffe81f;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    nav.tabmenu button {
+      background: none;
+      border: none;
+      color: #fff;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    nav.tabmenu button.active, nav.tabmenu button:hover {
+      background-color: #ffe81f;
+      color: #000;
+    }
+    .tab-content > div {
+      display: none;
+      padding: 20px;
+    }
+    .tab-content > .active {
+      display: block;
     }
     table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 16px;
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #111;
+      margin-bottom: 2rem;
     }
-    th, td {
-        border: 1px solid #00bfff55;
-        padding: 8px 12px;
+    td {
+      border: 1px solid #333;
+      padding: 8px;
+      vertical-align: top;
     }
-    th {
-        color: #ffe81f;
-        width: 30%;
-        text-align: left;
+    td:first-child {
+      width: 30%;
+      font-weight: bold;
     }
     ul {
-        margin: 0;
-        padding-left: 20px;
+      padding-left: 20px;
     }
-    li {
-        margin-bottom: 8px;
+    a {
+      color: #81d4fa;
     }
-    footer {
-        text-align: right;
-        font-size: 0.8em;
-        color: #666;
-        margin-top: 60px;
+    .text-center {
+      text-align: center;
     }
     hr {
-        border: none;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #00bfff88, transparent);
-        margin: 40px 0;
+      border: 1px solid #444;
     }
-    /* Button zum Berichte lesen */
-    .berichte-button {
-        display: block;
-        width: max-content;
-        margin: 30px auto;
-        background: #ffe81f;
-        color: #000;
-        padding: 12px 30px;
-        font-weight: 700;
-        border-radius: 6px;
-        text-decoration: none;
-        box-shadow: 0 0 15px #ffe81faa;
-        text-align: center;
-        font-size: 18px;
-        transition: background 0.3s ease;
-    }
-    .berichte-button:hover {
-        background: #ffd600;
-    }
-</style>
+  </style>
 </head>
 <body>
 
-<h1>PERSONENAKTE – VERTRAULICH</h1>
-<div class="quote">„A‑23 ist kein Soldat im klassischen Sinne – er ist ein Präzisionsinstrument.“<br>– ARC‑Kommandant Alpha‑77 „Fordo“</div>
+<header class="text-center">
+  <img src="https://i.imgur.com/EXVRzlm.png" alt="Banner" />
+</header>
 
-<!-- Button zum Berichte lesen -->
-<a href="berichte.html" class="berichte-button">Berichte lesen</a>
+<nav class="tabmenu">
+  <button class="tablink active" onclick="openTab(event, 'willkommen')">Willkommen</button>
+  <button class="tablink" onclick="openTab(event, 'steckbrief')">Steckbrief</button>
+  <button class="tablink" onclick="openTab(event, 'alpha23')">Alpha-23</button>
+  <button class="tablink" onclick="openTab(event, 'beziehungen')">Beziehungen</button>
+</nav>
 
-<div class="section">
-<h2>Grunddaten</h2>
-<table>
-<tr><th>Codename</th><td>„Krayt“</td></tr>
-<tr><th>Rufname</th><td>A‑23</td></tr>
-<tr><th>Einheit</th><td>Alpha Advanced Recon Commando</td></tr>
-<tr><th>Status</th><td>Aktiv – Tier‑1‑Reserve</td></tr>
-</table>
-</div>
+<section class="tab-content">
+  <div id="willkommen" class="active">
+    <p>Guten Tag liebe Community,</p>
+    <p>
+      hiermit bewerbe ich mich zu einem Standard-CC innerhalb der Alpha-ARCs, aber erstmal etwas zu mir.
+    </p>
+    <p>
+      Mein Name ist Ares, einige kennen mich unter meinem echten Namen Darius. Ich bin 17 Jahre alt. In meiner Zeit auf EGM habe ich diverse Lore-Chars oder CCs gespielt und weiß daher, wie man sich an die Star Wars Lore oder eigene Geschichten hält.
+    </p>
+    <p>
+      Ich habe versucht, meine Bewerbung im Stil von Jedipedia aufzubauen – ich hoffe, es ist mir gelungen!
+    </p>
+    <p>
+      <strong>VyHub:</strong> <a href="https://vyhub.einfach-gaming.de/user/9edd25bc-ee11-4a4a-a4a4-0c6cf57f322e" target="_blank">*Klick*</a><br>
+      <strong>TS:</strong> Ares 🎮<br>
+      <strong>Discord:</strong> darius.2192
+    </p>
+  </div>
 
-<div class="section">
-<h2>Physisches Profil</h2>
-<table>
-<tr><th>Genetische Vorlage</th><td>Jango Fett</td></tr>
-<tr><th>Größe</th><td>1,83&nbsp;m</td></tr>
-<tr><th>Körperbau</th><td>Trainiert, Einzeloperations‑optimiert</td></tr>
-<tr><th>Besondere Merkmale</th><td>Hohe neuronale Unabhängigkeit, extreme Stressresistenz</td></tr>
-</table>
-</div>
+  <div id="steckbrief">
+    <div class="text-center">
+      <h2>Alpha-23 „Krayt“</h2>
+      <img src="https://i.imgur.com/pq696KI.png" alt="Alpha-23 Krayt" />
+    </div>
+    <table>
+      <tr><td>Spezies</td><td>Mensch (Klon)</td></tr>
+      <tr><td>Geschlecht</td><td>Männlich</td></tr>
+      <tr><td>Haarfarbe</td><td>Schwarz / Grau</td></tr>
+      <tr><td>Augenfarbe</td><td>Braun</td></tr>
+      <tr><td>Körpergröße</td><td>1,83 Meter</td></tr>
+      <tr><td>Heimat</td><td>Kamino</td></tr>
+      <tr><td>Stationierung</td><td>4th Flotte</td></tr>
+      <tr><td>Beruf / Tätigkeit</td><td>Klonkrieger</td></tr>
+      <tr><td>Position</td><td>Alpha Advanced Recon Commando</td></tr>
+      <tr><td>Dienstgrad</td><td>Sergeant</td></tr>
+      <tr>
+        <td>Bewaffnung</td>
+        <td>
+          Wester M5 Blastergewehr, Valken 38x, DC-17, DC-17 Duals, Wrist Rocket, Wrist Blaster, Wrist Flame, Jetpack
+        </td>
+      </tr>
+      <tr><td>Fahrzeuge / Raumschiffe</td><td>LAAT/i (Witchcraft), ARC-170 Sternjäger</td></tr>
+      <tr><td>Bekannte Einsätze</td><td>Kamino</td></tr>
+      <tr>
+        <td>Zugehörigkeit</td>
+        <td>
+          Galaktische Republik<br>
+          • Große Armee der Republik<br>
+          • 4th Flotte
+        </td>
+      </tr>
+    </table>
+  </div>
 
-<div class="section">
-<h2>Psychologisches Profil</h2>
-<table>
-<tr><th>Verhalten</th><td>Diszipliniert, kalkulierend, eigenständig</td></tr>
-<tr><th>Risikoaffinität</th><td>Hoch, jedoch kontrolliert</td></tr>
-<tr><th>Loyalität</th><td>Republik – funktional, nicht ideologisch</td></tr>
-<tr><th>Kritische Merkmale</th><td>Hohe Autoritätsresistenz gegenüber politischen Instanzen</td></tr>
-</table>
-</div>
+  <div id="alpha23">
+    <h2>Alpha-23 „Krayt“</h2>
+    <p>
+      Alpha 23, genannt A-23 oder Krayt, war ein <i>Alpha Advanced Recon Commando</i> in der Großen Armee der Republik. Während der Klonkriege begleitete er General Anakin Skywalker in zahlreichen Einsätzen. Krayt galt als strategischer, disziplinierter Soldat, der bevorzugt unabhängig oder in kleinen Trupps operierte.
+    </p>
+    <hr>
+    <h3>22 VSY – Felucia</h3>
+    <blockquote>„Wenn du immer nur auf Sicher gehst, wirst du nie Geschichte schreiben.“ – Anakin Skywalker zu Alpha-23</blockquote>
+    <p>
+      Ihre erste gemeinsame Mission führte sie auf den umkämpften Dschungelplaneten Felucia. Krayt plante einen klassischen Angriff – Skywalker jedoch einen riskanten Stoßtrupp. Widerwillig folgte Krayt – mit Erfolg. Dies veränderte Krayts Sichtweise.
+    </p>
+    <hr>
+    <h3>21 VSY – Rhen Var</h3>
+    <blockquote>„Ihre Taktik wäre effektiver, wenn wir uns in einer Holosimulation befänden.“ – Alpha-23</blockquote>
+    <p>
+      Während Operation „Sturmzahn“ widersprach Krayt Skywalkers Plan eines Frontalangriffs. Stattdessen setzte sich Krayts taktisch überlegene Methode durch – mit minimalen Verlusten.
+    </p>
+    <hr>
+    <h2>Rolle in der 501st Legion</h2>
+    <p>
+      Krayt übernahm zunehmend verdeckte Operationen, fernab der Front. Er war kühl, effizient, unnachgiebig – und eine Legende unter den Alpha-ARCs.
+    </p>
+    <hr>
+    <h2>Trivia</h2>
+    <ul>
+      <li>Der Name „Krayt“ bezieht sich auf den Krayt-Drachen – Symbol für Kraft, Einsamkeit und tödliche Präzision.</li>
+      <li>Einziger bekannter ARC, der formellen Widerspruch gegen Jedi-Befehle einlegte.</li>
+    </ul>
+  </div>
 
-<div class="section">
-<h2>Diensthistorie (Auszug)</h2>
-<ul>
-<li><strong>22 VSY – Felucia:</strong> Erfolgreicher verdeckter Vorstoß mit Gen.&nbsp;Skywalker – Wandel im taktischen Weltbild.</li>
-<li><strong>21 VSY – Rhen Var:</strong> Verhinderung eines Frontalangriffs; Umsetzung alternativer Strategie mit minimalen Verlusten.</li>
-<li><strong>22 VSY – Kamino – Reaktivierung:</strong> Aus Stasis zur Abwehr einer Separatisten‑Invasion aktiviert; neutralisierte zwei Landewellen, koordinierte planetare Verteidigung für 37 Minuten.</li>
-</ul>
-</div>
+  <div id="beziehungen">
+    <h2>Beziehungen</h2>
+    <p><strong>Palpatine:</strong> Respektiert als Organisator, aber mit Misstrauen beobachtet.</p>
+    <p><strong>Republik:</strong> Absolute Loyalität, rein funktional – nicht emotional.</p>
+    <p><strong>Jedi:</strong> Anerkennung ihrer Macht, aber Zweifel an militärischer Führungsrolle.</p>
+    <p><strong>Null-ARCs:</strong> Respektvoll distanziert, als unvorhersehbare Variable betrachtet.</p>
+    <p><strong>Anakin Skywalker:</strong> Spannungsvolle, produktive Zusammenarbeit.</p>
+    <p><strong>Deserteure:</strong> Null Toleranz – Kriegsverrat.</p>
+    <p><strong>Zivilisten:</strong> Taktisch irrelevant, sofern nicht hinderlich.</p>
+  </div>
+</section>
 
-<div class="section">
-<h2>Beziehungen / Haltungen</h2>
-<ul>
-<li><strong>Anakin Skywalker:</strong> Respektvolle, taktisch effektive Partnerschaft, ideologische Differenzen.</li>
-<li><strong>Jedi‑Orden:</strong> Funktionale Kooperation; Zweifel an strategischer Eignung.</li>
-<li><strong>Kanzler Palpatine:</strong> Misstrauen gegenüber wachsendem Einfluss.</li>
-<li><strong>Mandalorianer:</strong> Kulturelle Verbindung, jedoch keine Identifikation.</li>
-<li><strong>Deserteure:</strong> Null Toleranz – betrachtet als Verrat.</li>
-</ul>
-</div>
-
-<div class="section">
-<h2>Besondere Ereignisse</h2>
-<ul>
-<li>Stasis‑Kapsel in Tipoca City: Aktivierung nur im äußersten Notfall.</li>
-<li>Spitzname „Krayt“ wegen lautloser, tödlicher Vorgehensweise – analog Krayt‑Drache.</li>
-</ul>
-</div>
-
-<footer>Letzte Aktualisierung: 14 Jun 2025</footer>
+<script>
+  function openTab(evt, tabId) {
+    const tabs = document.querySelectorAll('.tab-content > div');
+    const buttons = document.querySelectorAll('.tablink');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    buttons.forEach(btn => btn.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
-
