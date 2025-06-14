@@ -1,179 +1,126 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Bewerbung – Alpha‑23 „Krayt“</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jedipedia – Alpha‑23 „Krayt“</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      margin:0; padding:0;
-      font-family:'Orbitron',sans-serif;
-      background:#000;
-      color:#e0e0e0;
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #111;
+      color: #eee;
+      line-height: 1.6;
     }
-    header {
-      background:#111;
-      padding:20px;
-      text-align:center;
+    main {
+      display: flex;
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 20px;
     }
-    header img {max-width:100%;height:auto;}
-    nav {
-      display:flex;
-      justify-content:flex-end;
-      background:#111;
-      padding:10px 20px;
+    .content {
+      flex: 1;
+      margin-right: 20px;
     }
-    nav button {
-      background:transparent;
-      border:none;
-      color:#888;
-      font-size:16px;
-      margin-left:20px;
-      padding:10px;
-      cursor:pointer;
+    .infobox {
+      width: 300px;
+      background: #222;
+      padding: 20px;
+      border: 1px solid #444;
+      border-radius: 4px;
     }
-    nav button.active {
-      color:#fff;
-      border-bottom:2px solid #ffe81f;
+    .infobox img {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 10px;
     }
-    .tab {
-      display:none;
-      max-width:900px;
-      margin:20px auto;
-      padding:0 20px 40px;
+    .infobox td { padding: 4px; vertical-align: top; }
+    .infobox td.label { color: #81d4fa; font-weight: bold; width: 40%; }
+    h1 {
+      margin-top: 0;
+      font-size: 2em;
+      color: #ffe81f;
     }
-    .tab.active {display:block;}
-    h2 {color:#ffe81f;margin-top:0;}
-    .text-center {text-align:center;}
-    table {
-      width:100%;
-      border-collapse:collapse;
-      background:rgba(15,15,30,0.8);
-      margin:20px 0;
+    h2 { color: #ffe81f; margin-bottom: 0.4em; }
+    hr { border-color: #444; }
+    ul {
+      padding-left: 1.2em;
     }
-    td {
-      border:1px solid #222;
-      padding:8px;
-      vertical-align:top;
+    #toc {
+      background: #222;
+      border: 1px solid #444;
+      padding: 10px;
+      margin-bottom: 20px;
     }
-    td:first-child {width:30%;font-weight:600;color:#88ccff;}
-    ul {margin:0;padding-left:20px;}
-    blockquote {
-      border-left:4px solid #00bfff;
-      padding-left:16px;
-      color:#ccc;
-      margin:12px 0;
+    #toc ul { list-style: none; padding-left: 0; }
+    #toc a {
+      color: #81d4fa;
+      text-decoration: none;
     }
-    p,li {line-height:1.4;}
+    #toc a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="https://i.imgur.com/EXVRzlm.png" alt="Banner">
-</header>
+<main>
+  <div class="content">
+    <h1>Alpha‑23 „Krayt“</h1>
 
-<nav>
-  <button class="tab-btn active" data-tab="willkommen">Willkommen</button>
-  <button class="tab-btn" data-tab="steckbrief">Steckbrief</button>
-  <button class="tab-btn" data-tab="alpha23">Alpha‑23</button>
-  <button class="tab-btn" data-tab="beziehungen">Beziehungen</button>
-</nav>
+    <div id="toc">
+      <h2>Inhaltsverzeichnis</h2>
+      <ul>
+        <li><a href="#biografie">Biografie</a></li>
+        <li><a href="#einsaetze">Einsätze</a></li>
+        <li><a href="#rolle">Rolle in der Republik</a></li>
+        <li><a href="#trivia">Trivia</a></li>
+      </ul>
+    </div>
 
-<div id="willkommen" class="tab active">
-  <p>Guten Tag liebe Community,</p>
-  <p>hiermit bewerbe ich mich zu einem Standard‑CC innerhalb der Alpha‑ARCs. Mein Name ist <strong>Ares</strong> (Darius), 17 Jahre alt.</p>
-  <p>In meiner Zeit auf EGM habe ich diverse Lore‑Chars oder CCs gespielt und kenne mich mit Star Wars Lore und eigenen Geschichten aus. Ich habe meine Bewerbung im Stil von Jedipedia aufgebaut – ich hoffe, es ist nicht allzu verwirrend und gefällt euch!</p>
-  <p><strong>VyHub:</strong> <a href="https://vyhub.einfach-gaming.de/user/9edd25bc-ee11-4a4a-a4a4-0c6cf57f322e" style="color:#00bfff">*Klick*</a><br>
-     <strong>TS:</strong> Ares 🎮<br>
-     <strong>Discord:</strong> darius.2192</p>
-</div>
+    <h2 id="biografie">Biografie</h2>
+    <p><i>Alpha‑23, genannt A‑23 oder „Krayt“, war ein Alpha Advanced Recon Commando in der Großen Armee der Republik. Während der Klonkriege agierte er häufig unter dem Kommando von Jedi‑Generälen und führte verdeckte Einsätze hinter den Linien aus.</i></p>
 
-<div id="steckbrief" class="tab">
-  <div class="text-center">
-    <h2>Alpha‑23 „Krayt“</h2>
-    <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23">
+    <h2 id="einsaetze">Bekannte Einsätze</h2>
+    <h3>22 VSY – Felucia</h3>
+    <blockquote>„Wenn du immer nur auf Sicher gehst, wirst du nie Geschichte schreiben.“ – Anakin Skywalker</blockquote>
+    <p>Krayt führte einen verdeckten Vorstoß in eine Droidenfabrik ...</p>
+
+    <h3>21 VSY – Rhen Var</h3>
+    <blockquote>„Ihre Taktik wäre effektiver, wenn …“ – A‑23 zu Anakin</blockquote>
+    <p>Krayt verhinderte einen Frontalangriff durch alternative Vorgehensweise ...</p>
+
+    <h2 id="rolle">Rolle innerhalb der Republik</h2>
+    <p>Alpha‑23 etablierte sich als Spezialist asymmetrischer Kriegsführung. Er arbeitete häufig eigenständig in kleinen Teams und zeigte hohe Effektivität bei geheimen Operationen. Sein pragmatischer Ansatz führte zu Spannungen mit politischen und Jedi‑Führungsstrukturen.</p>
+
+    <h2 id="trivia">Trivia</h2>
+    <ul>
+      <li>Spitzname „Krayt“ inspiriert durch den Krayt‑Drachen</li>
+      <li>Einer der wenigen ARC-Soldaten mit formellem Widerspruch gegen Jedi‑Befehle</li>
+    </ul>
   </div>
-  <table>
-    <tr><td>Spezies</td><td>Mensch (Klon)</td></tr>
-    <tr><td>Geschlecht</td><td>Männlich</td></tr>
-    <tr><td>Haarfarbe</td><td>Schwarz / Grau</td></tr>
-    <tr><td>Augenfarbe</td><td>Braun</td></tr>
-    <tr><td>Körpergröße</td><td>1,83 m</td></tr>
-    <tr><td>Heimat</td><td>Kamino</td></tr>
-    <tr><td>Stationierung</td><td>4th Flotte</td></tr>
-    <tr><td>Beruf</td><td>Klonkrieger</td></tr>
-    <tr><td>Position</td><td>Alpha Advanced Recon Commando</td></tr>
-    <tr><td>Dienstgrad</td><td>Sergeant</td></tr>
-    <tr><td>Bewaffnung</td><td>
-      <ul>
-        <li>Wester M5 Blastergewehr</li>
-        <li>Valken 38x</li>
-        <li>DC‑17 / DC‑17 Duals</li>
-        <li>Wrist Rakete, Wrist Blaster, Wrist Flamme</li>
-        <li>Jetpack</li>
-      </ul>
-    </td></tr>
-    <tr><td>Fahrzeuge / Raumschiffe</td><td>
-      <ul>
-        <li>LAAT/i (Witchcraft)</li>
-        <li>ARC‑170 Sternjäger</li>
-      </ul>
-    </td></tr>
-    <tr><td>Bekannte Einsätze</td><td>Kamino</td></tr>
-    <tr><td>Zugehörigkeit</td><td>
-      Galaktische Republik<br>
-      • Große Armee der Republik<br>
-      • 4th Flotte
-    </td></tr>
-  </table>
-</div>
 
-<div id="alpha23" class="tab">
-  <h2>Alpha‑23 „Krayt“</h2>
-  <p>Alpha 23 (A‑23 / Krayt) war ein Alpha ARC der Großen Armee der Republik...</p>
-  <hr>
-  <h3>22 VSY – Felucia</h3>
-  <blockquote>„Wenn du immer nur auf Sicher gehst, wirst du nie Geschichte schreiben.“ – Anakin Skywalker</blockquote>
-  <p>Sie führten verdeckt Einsätze...</p>
-  <hr>
-  <h3>21 VSY – Rhen Var</h3>
-  <blockquote>„…wenn wir uns in einer Holosimulation befänden…“ – Alpha‑23</blockquote>
-  <p>Während Operation „Sturmzahn“...</p>
-  <hr>
-  <h2>Rolle in der 501st Legion</h2>
-  <p>Krayt spezialisierte sich auf verdeckte Einsätze hinter feindlichen Linien...</p>
-  <hr>
-  <h2>Trivia</h2>
-  <ul>
-    <li>Name inspiriert vom Krayt‑Drachen.</li>
-    <li>Einziger ARC, der formell widersprach.</li>
-  </ul>
-</div>
-
-<div id="beziehungen" class="tab">
-  <h2>Beziehungen</h2>
-  <p><strong>Palpatine</strong>: Misstrauen gegenüber seinem Einfluss.</p>
-  <p><strong>Republik</strong>: Funktionale Loyalität, nicht emotional.</p>
-  <p><strong>Jedi</strong>: Anerkennung ihrer Macht, Zweifel an Führungsqualitäten.</p>
-  <p><strong>Null‑ARCs</strong>: Respektvolle Distanz.</p>
-  <p><strong>Anakin</strong>: Taktischer Respekt, ideologische Differenzen.</p>
-  <p><strong>Deserteure</strong>: Null Toleranz.</p>
-  <p><strong>Zivilisten</strong>: Nur relevant, wenn hinderlich.</p>
-</div>
-
-<script>
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.onclick = () => {
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    };
-  });
-</script>
+  <div class="infobox">
+    <img src="https://i.imgur.com/pq696KI.png" alt="Alpha-23 Krayt">
+    <table>
+      <tr><td class="label">Spezies</td><td>Mensch (Klon)</td></tr>
+      <tr><td class="label">Geschlecht</td><td>Männlich</td></tr>
+      <tr><td class="label">Haarfarbe</td><td>Schwarz / Grau</td></tr>
+      <tr><td class="label">Augenfarbe</td><td>Braun</td></tr>
+      <tr><td class="label">Größe</td><td>1,83 m</td></tr>
+      <tr><td class="label">Heimat</td><td>Kamino</td></tr>
+      <tr><td class="label">Einheit</td><td>Alpha‑ARCs, 4. Flotte</td></tr>
+      <tr><td class="label">Dienstgrad</td><td>Sergeant</td></tr>
+      <tr><td class="label">Position</td><td>Alpha Advanced Recon Commando</td></tr>
+      <tr><td class="label">Bewaffnung</td><td>Wester M5, Valken 38x, DC‑17(D), Wrist‑Set, Jetpack</td></tr>
+      <tr><td class="label">Fahrzeuge</td><td>LAAT/i (Witchcraft), ARC‑170</td></tr>
+      <tr><td class="label">Zugehörigkeit</td><td>Galaktische Republik &gt; GAR &gt; 4. Flotte</td></tr>
+    </table>
+  </div>
+</main>
 
 </body>
 </html>
+
 
