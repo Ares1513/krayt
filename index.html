@@ -1,123 +1,163 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jedipedia – Alpha‑23 „Krayt“</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: #111;
-      color: #eee;
-      line-height: 1.6;
-    }
-    main {
-      display: flex;
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-    .content {
-      flex: 1;
-      margin-right: 20px;
-    }
-    .infobox {
-      width: 300px;
-      background: #222;
-      padding: 20px;
-      border: 1px solid #444;
-      border-radius: 4px;
-    }
-    .infobox img {
-      width: 100%;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-    .infobox td { padding: 4px; vertical-align: top; }
-    .infobox td.label { color: #81d4fa; font-weight: bold; width: 40%; }
-    h1 {
-      margin-top: 0;
-      font-size: 2em;
-      color: #ffe81f;
-    }
-    h2 { color: #ffe81f; margin-bottom: 0.4em; }
-    hr { border-color: #444; }
-    ul {
-      padding-left: 1.2em;
-    }
-    #toc {
-      background: #222;
-      border: 1px solid #444;
-      padding: 10px;
-      margin-bottom: 20px;
-    }
-    #toc ul { list-style: none; padding-left: 0; }
-    #toc a {
-      color: #81d4fa;
-      text-decoration: none;
-    }
-    #toc a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jedipedia – Alpha‑23 „Krayt“</title>
+
+<!-- Orbitron für dezente Star‑Wars‑Typo -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* === Grundlayout & Schrift === */
+:root{
+  --accent:#ffe81f;   /* gelb */
+  --link:#81d4fa;     /* hell‑cyan */
+  --bg:#000;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Orbitron',sans-serif;
+  background:url('datapad-bg.jpg') no-repeat center/cover fixed var(--bg);
+  color:#eee;
+  line-height:1.55;
+}
+
+/* === Rahmen & Container === */
+main{
+  max-width:1100px;
+  margin:40px auto;
+  display:flex;
+  gap:24px;
+  padding:0 16px;
+}
+.content{flex:1 1 0;}
+.infobox{
+  width:300px;
+  background:rgba(20,20,35,.85);
+  border:2px solid #222;
+  border-radius:8px;
+  padding:16px;
+  backdrop-filter:blur(2px);
+}
+
+/* === Überschriften === */
+h1{font-size:2.4rem;color:var(--accent);margin-bottom:.4em}
+h2{color:var(--accent);margin:.8em 0 .4em}
+h3{color:#00bfff;margin:.6em 0 .2em;font-size:1.1rem}
+blockquote{
+  border-left:4px solid #00bfff;
+  padding-left:12px;
+  margin:8px 0 16px;
+  color:#ccc;
+  font-style:italic;
+}
+
+/* === Infotabelle === */
+.infobox img{width:100%;border-radius:6px;margin-bottom:8px}
+.infobox table{width:100%;border-collapse:collapse;font-size:.9rem}
+.infobox td{padding:4px 6px;vertical-align:top;border-bottom:1px solid #333}
+.infobox td.label{color:var(--link);font-weight:700;width:38%}
+
+/* === Inhaltsverzeichnis === */
+#toc{
+  background:rgba(20,20,40,.8);
+  border:1px solid #333;
+  padding:12px;
+  margin-bottom:24px;
+  border-radius:6px;
+}
+#toc h2{
+  font-size:1.1rem;
+  margin-bottom:.4em;
+}
+#toc ul{list-style:none;padding-left:0}
+#toc a{
+  color:var(--link);
+  text-decoration:none;
+  font-size:.95rem;
+}
+#toc a:hover{text-decoration:underline}
+
+/* === Listen & Tabellen im Content === */
+ul{padding-left:1.2em;margin:6px 0 10px}
+table{width:100%;border-collapse:collapse;margin:18px 0;background:rgba(20,20,35,.8)}
+td{border:1px solid #222;padding:8px}
+td:first-child{color:var(--link);font-weight:600;width:28%}
+
+/* === Responsive Anpassungen === */
+@media(max-width:900px){
+  main{flex-direction:column}
+  .infobox{width:100%;order:-1;margin-bottom:20px}
+}
+</style>
 </head>
+
 <body>
 
 <main>
-  <div class="content">
+
+  <!-- ===== Textbereich ===== -->
+  <article class="content">
     <h1>Alpha‑23 „Krayt“</h1>
 
-    <div id="toc">
+    <!-- Inhaltsverzeichnis -->
+    <nav id="toc">
       <h2>Inhaltsverzeichnis</h2>
       <ul>
         <li><a href="#biografie">Biografie</a></li>
-        <li><a href="#einsaetze">Einsätze</a></li>
-        <li><a href="#rolle">Rolle in der Republik</a></li>
+        <li><a href="#einsaetze">Bekannte Einsätze</a></li>
+        <li><a href="#rolle">Rolle in der 501st Legion</a></li>
         <li><a href="#trivia">Trivia</a></li>
       </ul>
-    </div>
+    </nav>
 
+    <!-- =========  BIOGRAFIE ========= -->
     <h2 id="biografie">Biografie</h2>
-    <p><i>Alpha‑23, genannt A‑23 oder „Krayt“, war ein Alpha Advanced Recon Commando in der Großen Armee der Republik. Während der Klonkriege agierte er häufig unter dem Kommando von Jedi‑Generälen und führte verdeckte Einsätze hinter den Linien aus.</i></p>
+    <p><i>Alpha‑23, kurz A‑23 oder „Krayt“, war ein <b>Alpha Advanced Recon Commando</b> der Großen Armee der Republik. Seine Einsätze führten ihn häufig an die Seite von General Anakin Skywalker. Krayt galt als analytisch, beherrscht und bevorzugte Operationen in kleinen, hochspezialisierten Trupps.</i></p>
 
+    <!-- =========  EINSÄTZE ========= -->
     <h2 id="einsaetze">Bekannte Einsätze</h2>
-    <h3>22 VSY – Felucia</h3>
-    <blockquote>„Wenn du immer nur auf Sicher gehst, wirst du nie Geschichte schreiben.“ – Anakin Skywalker</blockquote>
-    <p>Krayt führte einen verdeckten Vorstoß in eine Droidenfabrik ...</p>
 
-    <h3>21 VSY – Rhen Var</h3>
-    <blockquote>„Ihre Taktik wäre effektiver, wenn …“ – A‑23 zu Anakin</blockquote>
-    <p>Krayt verhinderte einen Frontalangriff durch alternative Vorgehensweise ...</p>
+    <h3>22 VSY – Felucia</h3>
+    <blockquote>„Wenn du immer nur auf Sicher gehst, wirst du nie Geschichte schreiben.“ – Anakin Skywalker</blockquote>
+    <p>Im Dschungel von Felucia infiltrierte Krayt mit einem Stoßtrupp eine Droidenfabrik. Trotz seines ursprünglichen Plans eines geordneten Angriffs folgte er Skywalkers riskanter Taktik – mit Erfolg.</p>
 
-    <h2 id="rolle">Rolle innerhalb der Republik</h2>
-    <p>Alpha‑23 etablierte sich als Spezialist asymmetrischer Kriegsführung. Er arbeitete häufig eigenständig in kleinen Teams und zeigte hohe Effektivität bei geheimen Operationen. Sein pragmatischer Ansatz führte zu Spannungen mit politischen und Jedi‑Führungsstrukturen.</p>
+    <h3>21 VSY – Rhen Var</h3>
+    <blockquote>„Mit allem Respekt … ein Frontalangriff auf Höhen bedeutet nur Verluste.“ – A‑23 zu Skywalker</blockquote>
+    <p>Krayt verhinderte einen verlustreichen Sturmangriff, indem er eine alternative Route identifizierte und so das Kommandozentrum der Separatisten ausschaltete.</p>
 
+    <!-- =========  ROLLE ========= -->
+    <h2 id="rolle">Rolle in der 501st Legion</h2>
+    <p>Nach Felucia wurde Krayt verstärkt für verdeckte Operationen eingesetzt. Sein Ruf: kompromisslose Effizienz, präzise Planung, maximale Wirkung – ganz im Sinn des Krayt‑Drachen, dessen Namen er trägt.</p>
+
+    <!-- =========  TRIVIA ========= -->
     <h2 id="trivia">Trivia</h2>
     <ul>
-      <li>Spitzname „Krayt“ inspiriert durch den Krayt‑Drachen</li>
-      <li>Einer der wenigen ARC-Soldaten mit formellem Widerspruch gegen Jedi‑Befehle</li>
+      <li>Spitzname „Krayt“ deutet auf seine lautlose, aber tödliche Vorgehensweise.</li>
+      <li>Einer der wenigen ARC‑Soldaten, die formell Jedi‑Befehle anzweifelten.</li>
     </ul>
-  </div>
+  </article>
 
-  <div class="infobox">
+  <!-- ===== Infobox ===== -->
+  <aside class="infobox">
     <img src="https://i.imgur.com/pq696KI.png" alt="Alpha-23 Krayt">
     <table>
+      <tr><td colspan="2" style="text-align:center;font-weight:700;font-size:1.1rem">Steckbrief</td></tr>
       <tr><td class="label">Spezies</td><td>Mensch (Klon)</td></tr>
       <tr><td class="label">Geschlecht</td><td>Männlich</td></tr>
       <tr><td class="label">Haarfarbe</td><td>Schwarz / Grau</td></tr>
       <tr><td class="label">Augenfarbe</td><td>Braun</td></tr>
-      <tr><td class="label">Größe</td><td>1,83 m</td></tr>
+      <tr><td class="label">Größe</td><td>1,83 m</td></tr>
       <tr><td class="label">Heimat</td><td>Kamino</td></tr>
-      <tr><td class="label">Einheit</td><td>Alpha‑ARCs, 4. Flotte</td></tr>
+      <tr><td class="label">Einheit</td><td>Alpha‑ARCs</td></tr>
       <tr><td class="label">Dienstgrad</td><td>Sergeant</td></tr>
-      <tr><td class="label">Position</td><td>Alpha Advanced Recon Commando</td></tr>
-      <tr><td class="label">Bewaffnung</td><td>Wester M5, Valken 38x, DC‑17(D), Wrist‑Set, Jetpack</td></tr>
-      <tr><td class="label">Fahrzeuge</td><td>LAAT/i (Witchcraft), ARC‑170</td></tr>
-      <tr><td class="label">Zugehörigkeit</td><td>Galaktische Republik &gt; GAR &gt; 4. Flotte</td></tr>
+      <tr><td class="label">Bewaffnung</td><td>Wester M5, DC‑17 (Dual), Jetpack u. a.</td></tr>
+      <tr><td class="label">Fahrzeuge</td><td>LAAT/i „Witchcraft“, ARC‑170</td></tr>
+      <tr><td class="label">Zugehörigkeit</td><td>Republik &gt; GAR &gt; 4. Flotte</td></tr>
     </table>
-  </div>
+  </aside>
+
 </main>
 
 </body>
