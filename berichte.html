@@ -1,186 +1,246 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Einsatzberichte – A-23 „Krayt“</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
-<style>
-  body {
-    background: #000;
-    color: #e0e0e0;
-    font-family: Orbitron, sans-serif;
-    padding: 40px;
-  }
-  h1 {
-    color: #ffe81f;
-    text-align: center;
-  }
-  .bericht {
-    border: 1px solid #00bfff66;
-    padding: 20px;
-    margin: 20px 0;
-    background: rgba(20, 20, 40, 0.75);
-    position: relative;
-  }
-  #form-container {
-    display: none;
-    margin-bottom: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-  }
-  input[type="text"] {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-  }
-  button {
-    background: #00bfff;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  #login-container {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  #password {
-    font-size: 16px;
-    padding: 8px;
-  }
-  .bericht-title {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #ffe81f;
-  }
-  .delete-btn {
-    float: right;
-    margin-top: -30px;
-    background: #ff4444;
-    border: none;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-  }
-  .delete-btn:hover {
-    background: #cc0000;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Berichte</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f8f8f8;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+    }
+    .bericht {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    .bericht-title {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+    #create-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #create-form, #password-prompt {
+      display: none;
+      margin-top: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    input, textarea, button {
+      margin-top: 10px;
+      display: block;
+    }
+    #bericht-anzeige {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 40px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    #bericht-anzeige .inhalt {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .close-btn {
+      background: #e33;
+      color: white;
+      padding: 10px;
+      border: none;
+      float: right;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <h1>Berichte</h1>
+  <button id="create-btn">+ Bericht erstellen</button>
 
-<h1>Einsatzberichte – A-23 „Krayt“</h1>
+  <div id="password-prompt">
+    <p>Passwort eingeben:</p>
+    <input type="password" id="password-input">
+    <button id="password-submit">Bestätigen</button>
+    <button id="password-cancel">Abbrechen</button>
+  </div>
 
-<div id="login-container">
-  <input type="password" id="password" placeholder="Passwort eingeben" />
-  <button onclick="checkPassword()">Login</button>
-</div>
+  <form id="create-form">
+    <input type="text" id="rang" placeholder="Rang">
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="titel" placeholder="Titel des Berichts">
+    <textarea id="bericht-text" placeholder="Bericht..."></textarea>
+    <button type="button" id="submit-report">Speichern</button>
+    <button type="button" id="cancel-report">Abbrechen</button>
+  </form>
 
-<div id="form-container">
-  <h2>Neuen Bericht verfassen</h2>
-  <input type="text" id="rang" placeholder="Rang" />
-  <input type="text" id="name" placeholder="Name" />
-  <input type="text" id="titel" placeholder="Titel des Berichts" />
-  <textarea id="bericht-text" placeholder="Bericht eingeben..."></textarea><br />
-  <button onclick="sendeBericht()">Senden</button>
-</div>
+  <div id="berichte"></div>
 
-<div id="berichte">
-  <!-- Hier werden Berichte angezeigt -->
-</div>
+  <div id="bericht-anzeige">
+    <div class="inhalt">
+      <button class="close-btn" id="close-view">Schließen</button>
+      <p id="bericht-meta"></p>
+      <p id="bericht-content"></p>
+    </div>
+  </div>
 
-<script>
-  const korrektesPasswort = "3515";
-  const berichteContainer = document.getElementById("berichte");
+  <script>
+    const korrektesPasswort = "3515";
 
-  function checkPassword() {
-    const eingabe = document.getElementById("password").value;
-    if (eingabe === korrektesPasswort) {
-      document.getElementById("login-container").style.display = "none";
-      document.getElementById("form-container").style.display = "block";
-      ladeBerichte();
-    } else {
-      alert("Falsches Passwort!");
+    const berichteContainer = document.getElementById("berichte");
+    const createBtn = document.getElementById("create-btn");
+    const passwordPrompt = document.getElementById("password-prompt");
+    const passwordInput = document.getElementById("password-input");
+    const passwordSubmit = document.getElementById("password-submit");
+    const passwordCancel = document.getElementById("password-cancel");
+    const createForm = document.getElementById("create-form");
+    const submitReportBtn = document.getElementById("submit-report");
+    const cancelReportBtn = document.getElementById("cancel-report");
+    const berichtAnzeige = document.getElementById("bericht-anzeige");
+    const berichtContent = document.getElementById("bericht-content");
+    const berichtMeta = document.getElementById("bericht-meta");
+    const closeViewBtn = document.getElementById("close-view");
+
+    let deleteIndex = null;
+
+    function ladeBerichte() {
+      berichteContainer.innerHTML = "";
+      let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
+      if (berichte.length === 0) {
+        berichteContainer.innerHTML = "<p style='text-align:center; color:#888;'>Keine Berichte vorhanden.</p>";
+        return;
+      }
+
+      berichte.forEach((bericht, index) => {
+        const div = document.createElement("div");
+        div.className = "bericht";
+
+        const zeitKurz = bericht.zeit.split(',')[0];
+
+        div.innerHTML = `
+          <small>${zeitKurz}</small>
+          <div class="bericht-title">${bericht.titel}</div>
+          <small>${bericht.rang} ${bericht.name}</small>
+          <button onclick="frageLoeschen(${index}, event)" style="float:right; margin-top:5px; background:#ff4444; color:white; padding:6px 10px; font-size:12px; border:none; border-radius:4px; box-shadow: 0 0 8px #ff4444aa; cursor:pointer;">Löschen</button>
+        `;
+
+        div.onclick = () => zeigeBericht(bericht);
+        berichteContainer.appendChild(div);
+      });
     }
-  }
 
-  function sendeBericht() {
-    const text = document.getElementById("bericht-text").value.trim();
-    const titel = document.getElementById("titel").value.trim();
-    const rang = document.getElementById("rang").value.trim();
-    const name = document.getElementById("name").value.trim();
-    if (!text || !titel || !rang || !name) return alert("Alle Felder ausfüllen!");
-
-    let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
-    berichte.unshift({ text, titel, rang, name, zeit: new Date().toLocaleString() });
-    localStorage.setItem("berichte", JSON.stringify(berichte));
-
-    document.getElementById("bericht-text").value = "";
-    document.getElementById("titel").value = "";
-    document.getElementById("rang").value = "";
-    document.getElementById("name").value = "";
-    ladeBerichte();
-  }
-
-  function ladeBerichte() {
-    berichteContainer.innerHTML = "";
-    let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
-    if (berichte.length === 0) {
-      berichteContainer.innerHTML = "<p style='text-align:center; color:#888;'>Keine Berichte vorhanden.</p>";
-      return;
+    function zeigeBericht(bericht) {
+      berichtMeta.textContent = `${bericht.zeit} – ${bericht.rang} ${bericht.name} – ${bericht.titel}`;
+      berichtContent.textContent = bericht.text;
+      berichtAnzeige.style.display = "block";
+      document.body.style.overflow = "hidden";
     }
-    berichte.forEach((bericht, index) => {
-      const div = document.createElement("div");
-      div.className = "bericht";
-      const zeitKurz = bericht.zeit.split(',')[0];
 
-      const titleHTML = `
-        <small>${zeitKurz}</small>
-        <div class="bericht-title">${bericht.titel}</div>
-        <small>${bericht.rang} ${bericht.name}</small>
-      `;
-      div.innerHTML = titleHTML;
+    closeViewBtn.onclick = () => {
+      berichtAnzeige.style.display = "none";
+      document.body.style.overflow = "auto";
+    };
 
-      div.onclick = (e) => {
-        if (e.target.classList.contains("delete-btn")) return;
-        zeigeBericht(bericht);
-      };
+    createBtn.onclick = () => {
+      passwordPrompt.style.display = "block";
+      createBtn.style.display = "none";
+      passwordInput.value = "";
+      passwordInput.focus();
+      deleteIndex = null;
+    };
 
-      const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "🗑️";
-      deleteBtn.className = "delete-btn";
-      deleteBtn.title = "Bericht löschen";
-      deleteBtn.onclick = (e) => {
-        e.stopPropagation();
-        const eingabe = prompt("Zum Löschen bitte Passwort eingeben:");
-        if (eingabe === korrektesPasswort) {
-          if (confirm("Bericht wirklich löschen?")) {
-            berichte.splice(index, 1);
-            localStorage.setItem("berichte", JSON.stringify(berichte));
-            ladeBerichte();
-          }
+    passwordCancel.onclick = () => {
+      passwordPrompt.style.display = "none";
+      createBtn.style.display = "inline-block";
+      deleteIndex = null;
+    };
+
+    passwordSubmit.onclick = () => {
+      if (passwordInput.value === korrektesPasswort) {
+        passwordPrompt.style.display = "none";
+
+        if (deleteIndex !== null) {
+          let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
+          berichte.splice(deleteIndex, 1);
+          localStorage.setItem("berichte", JSON.stringify(berichte));
+          ladeBerichte();
+          deleteIndex = null;
         } else {
-          alert("Falsches Passwort!");
+          createForm.style.display = "block";
+          document.getElementById("rang").focus();
         }
-      };
 
-      div.appendChild(deleteBtn);
-      berichteContainer.appendChild(div);
-    });
-  }
+      } else {
+        alert("Falsches Passwort!");
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    };
 
-  function zeigeBericht(bericht) {
-    alert(`${bericht.titel}\n${bericht.rang} ${bericht.name}\n\n${bericht.text}`);
-  }
+    cancelReportBtn.onclick = () => {
+      createForm.style.display = "none";
+      createBtn.style.display = "inline-block";
+    };
 
-  ladeBerichte();
-</script>
+    submitReportBtn.onclick = () => {
+      const rang = document.getElementById("rang").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const titel = document.getElementById("titel").value.trim();
+      const text = document.getElementById("bericht-text").value.trim();
 
+      if (!rang || !name || !titel || !text) {
+        alert("Bitte alle Felder ausfüllen.");
+        return;
+      }
+
+      let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
+      berichte.unshift({
+        rang: rang,
+        name: name,
+        titel: titel,
+        text: text,
+        zeit: new Date().toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" })
+      });
+      localStorage.setItem("berichte", JSON.stringify(berichte));
+
+      createForm.reset();
+      createForm.style.display = "none";
+      createBtn.style.display = "inline-block";
+
+      ladeBerichte();
+    };
+
+    function frageLoeschen(index, event) {
+      event.stopPropagation();
+      deleteIndex = index;
+      passwordPrompt.style.display = "block";
+      createBtn.style.display = "none";
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+
+    ladeBerichte();
+  </script>
 </body>
 </html>
