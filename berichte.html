@@ -16,19 +16,59 @@
     text-align: center;
     margin-bottom: 30px;
   }
+  #berichte {
+    margin-bottom: 40px;
+  }
   .bericht {
     border: 1px solid #00bfff66;
     padding: 20px;
     margin: 20px 0;
     background: rgba(20,20,40,0.75);
+    cursor: pointer;
   }
-  #form-container {
-    display: none;
+  .bericht:hover {
+    background: rgba(20,20,60,0.9);
+  }
+  #button-container {
+    text-align: center;
     margin-bottom: 30px;
+  }
+  button {
+    background: #00bfff;
+    border: none;
+    color: black;
+    padding: 12px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px #00bfffaa;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0099cc;
+  }
+  #password-prompt {
+    display: none;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  #password-input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #00bfffaa;
+    background: #111;
+    color: #eee;
+    width: 250px;
+  }
+  #create-form {
+    display: none;
+    margin-top: 30px;
   }
   textarea {
     width: 100%;
-    height: 100px;
+    height: 120px;
     font-family: Orbitron, sans-serif;
     font-size: 16px;
     padding: 10px;
@@ -38,27 +78,20 @@
     color: #eee;
     resize: vertical;
   }
-  button {
-    background: #00bfff;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+  #submit-report {
+    margin-top: 10px;
   }
-  #login-container {
-    text-align: center;
-    margin-bottom: 30px;
+  #bericht-anzeige {
+    white-space: pre-wrap;
+    margin-top: 20px;
+    border: 1px solid #00bfff88;
+    background: rgba(20,20,40,0.75);
+    padding: 20px;
   }
-  #password {
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #00bfff99;
-    background: #111;
-    color: #eee;
+  #close-view {
+    margin-top: 10px;
+    background: #ff4444;
+    color: white;
   }
 </style>
 </head>
@@ -66,66 +99,127 @@
 
 <h1>Einsatzberichte – A-23 „Krayt“</h1>
 
-<div id="login-container">
-  <input type="password" id="password" placeholder="Passwort eingeben" />
-  <button onclick="checkPassword()">Login</button>
+<div id="berichte">
+  <!-- Liste der Berichte -->
 </div>
 
-<div id="form-container">
+<div id="button-container">
+  <button id="create-btn">Bericht erstellen</button>
+</div>
+
+<div id="password-prompt">
+  <input type="password" id="password-input" placeholder="Passwort eingeben" />
+  <button id="password-submit">Bestätigen</button>
+  <button id="password-cancel">Abbrechen</button>
+</div>
+
+<div id="create-form">
   <h2>Neuen Bericht verfassen</h2>
   <textarea id="bericht-text" placeholder="Bericht eingeben..."></textarea><br />
-  <button onclick="sendeBericht()">Senden</button>
+  <button id="submit-report">Senden</button>
+  <button id="cancel-report">Abbrechen</button>
 </div>
 
-<div id="berichte">
-  <!-- Hier werden Berichte angezeigt -->
+<div id="bericht-anzeige" style="display:none;">
+  <h2>Bericht lesen</h2>
+  <div id="bericht-content"></div>
+  <button id="close-view">Schließen</button>
 </div>
 
 <script>
   const korrektesPasswort = "3515";
 
-  function checkPassword() {
-    const eingabe = document.getElementById("password").value;
-    if (eingabe === korrektesPasswort) {
-      document.getElementById("login-container").style.display = "none";
-      document.getElementById("form-container").style.display = "block";
-      ladeBerichte();
-    } else {
-      alert("Falsches Passwort!");
+  const berichteContainer = document.getElementById("berichte");
+  const createBtn = document.getElementById("create-btn");
+  const passwordPrompt = document.getElementById("password-prompt");
+  const passwordInput = document.getElementById("password-input");
+  const passwordSubmit = document.getElementById("password-submit");
+  const passwordCancel = document.getElementById("password-cancel");
+  const createForm = document.getElementById("create-form");
+  const submitReportBtn = document.getElementById("submit-report");
+  const cancelReportBtn = document.getElementById("cancel-report");
+  const berichtAnzeige = document.getElementById("bericht-anzeige");
+  const berichtContent = document.getElementById("bericht-content");
+  const closeViewBtn = document.getElementById("close-view");
+
+  function ladeBerichte() {
+    berichteContainer.innerHTML = "";
+    let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
+    if (berichte.length === 0) {
+      berichteContainer.innerHTML = "<p>Keine Berichte vorhanden.</p>";
+      return;
     }
+    berichte.forEach((bericht, index) => {
+      const div = document.createElement("div");
+      div.className = "bericht";
+      div.textContent = `${bericht.zeit} - Bericht #${index + 1}`;
+      div.onclick = () => {
+        zeigeBericht(bericht);
+      };
+      berichteContainer.appendChild(div);
+    });
   }
 
-  function sendeBericht() {
-    const text = document.getElementById("bericht-text").value.trim();
-    if (!text) return alert("Bitte einen Bericht eingeben.");
+  function zeigeBericht(bericht) {
+    berichtContent.textContent = `${bericht.zeit}\n\n${bericht.text}`;
+    berichtAnzeige.style.display = "block";
+    // Scroll to top when opening
+    berichtAnzeige.scrollTop = 0;
+  }
 
+  closeViewBtn.onclick = () => {
+    berichtAnzeige.style.display = "none";
+  };
+
+  createBtn.onclick = () => {
+    passwordPrompt.style.display = "block";
+    createBtn.style.display = "none";
+    passwordInput.value = "";
+    passwordInput.focus();
+  };
+
+  passwordCancel.onclick = () => {
+    passwordPrompt.style.display = "none";
+    createBtn.style.display = "inline-block";
+  };
+
+  passwordSubmit.onclick = () => {
+    if (passwordInput.value === korrektesPasswort) {
+      passwordPrompt.style.display = "none";
+      createForm.style.display = "block";
+      document.getElementById("bericht-text").focus();
+    } else {
+      alert("Falsches Passwort!");
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+  };
+
+  cancelReportBtn.onclick = () => {
+    createForm.style.display = "none";
+    createBtn.style.display = "inline-block";
+  };
+
+  submitReportBtn.onclick = () => {
+    const text = document.getElementById("bericht-text").value.trim();
+    if (!text) {
+      alert("Bitte einen Bericht eingeben.");
+      return;
+    }
     let berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
     berichte.unshift({ text: text, zeit: new Date().toLocaleString() });
     localStorage.setItem("berichte", JSON.stringify(berichte));
-
     document.getElementById("bericht-text").value = "";
+    createForm.style.display = "none";
+    createBtn.style.display = "inline-block";
     ladeBerichte();
-  }
+  };
 
-  function ladeBerichte() {
-    const container = document.getElementById("berichte");
-    container.innerHTML = "";
-    const berichte = JSON.parse(localStorage.getItem("berichte") || "[]");
-
-    if (berichte.length === 0) {
-      container.innerHTML = "<p>Keine Berichte vorhanden.</p>";
-      return;
-    }
-
-    berichte.forEach(e => {
-      const div = document.createElement("div");
-      div.className = "bericht";
-      div.innerHTML = `<small>${e.zeit}</small><p>${e.text}</p>`;
-      container.appendChild(div);
-    });
-  }
+  // Lade Berichte beim Start
+  ladeBerichte();
 </script>
 
 </body>
 </html>
+
 
