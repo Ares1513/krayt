@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jedipedia – Alpha‑23 „Krayt“</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Jedipedia-Tab-Stil */
-    .tab-link {
-      @apply px-4 py-2 bg-gray-800 text-gray-400 hover:text-gray-100 border-b-2 border-transparent;
-    }
-    .tab-link.active {
-      @apply text-white border-blue-400;
-    }
-    /* Steckbrief-Box */
-    .info-box {
-      background: #2f2f2f;
-      border: 1px solid #444;
-      border-radius: 0.375rem;
-    }
-    .info-box-header {
-      background: #1f1f1f;
-      padding: 0.5rem;
-      border-bottom: 1px solid #444;
-      font-weight: bold;
-      color: #ccc;
-    }
-    .info-box-content {
-      padding: 0.75rem;
-      color: #ddd;
-    }
-  </style>
-</head>
-<body class="bg-gray-900 text-gray-200 font-sans leading-normal">
+<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Jedipedia – Alpha‑23 „Krayt“</title><script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .tab-link { @apply px-4 py-2 bg-gray-800 text-gray-400 hover:text-gray-100 border-b-2 border-transparent; }
+  .tab-link.active { @apply text-white border-blue-400; }
+  .info-box { background: #2f2f2f; border: 1px solid #444; border-radius: .375rem; }
+  .info-box-header { background: #1f1f1f; padding: .5rem; border-bottom: 1px solid #444; font-weight: bold; color: #ccc; }
+  .info-box-content { padding: .75rem; color: #ddd; }
+</style></head>
+<body class="bg-gray-900 text-gray-200 font-sans">
   <div class="container mx-auto p-6 max-w-6xl">
-    <!-- Titel & Tab-Leiste -->
-    <header class="mb-6">
-      <h1 class="text-3xl font-bold text-white inline-block mr-6">Alpha‑23 „Krayt“</h1>
-      <nav class="inline-block align-bottom">
+    <!-- Header mit Tabs -->
+    <header class="mb-6 flex flex-wrap items-baseline">
+      <h1 class="text-3xl font-bold text-white mr-6">Alpha‑23 „Krayt“</h1>
+      <nav class="flex flex-wrap gap-2">
         <a href="#overview" class="tab-link active">Übersicht</a>
         <a href="#biografie" class="tab-link">Biografie</a>
         <a href="#beziehungen" class="tab-link">Beziehungen</a>
@@ -46,43 +20,34 @@
     </header>
 
     <div class="flex flex-col lg:flex-row gap-8">
-      <!-- Inhalstext**
+      <!-- Hauptinhalt -->
       <main class="flex-1 space-y-10">
         <section id="overview">
           <p>Guten Tag liebe Community, hiermit bewerbe ich mich als Standard‑CC ...</p>
         </section>
-
         <section id="biografie">
           <h2 class="text-2xl font-semibold mb-4 border-b border-gray-700">Biografie</h2>
-          <!-- Beispielartikel -->
+          <!-- Beispiel -->
           <article class="mb-6">
             <h3 class="text-xl font-semibold mb-2">22 VSY – Schlacht um Kamino</h3>
-            <blockquote class="pl-4 italic border-l-4 border-blue-400 mb-2">
-              „Still und tödlich lauerte er im Verborgenen...“
-            </blockquote>
+            <blockquote class="pl-4 italic border-l-4 border-blue-400 mb-2">„Still und tödlich lauerte er im Verborgenen...“</blockquote>
             <p>Nach dem Erwachen aus der Stasis handelte Krayt sofort ...</p>
           </article>
-          <!-- Weitere Artikel analog -->
         </section>
-
         <section id="beziehungen">
           <h2 class="text-2xl font-semibold mb-4 border-b border-gray-700">Beziehungen</h2>
           <ul class="list-disc list-inside space-y-2">
             <li><strong>Kanzler Palpatine:</strong> Skepsis gegenüber politischer Kontrolle.</li>
-            <li><strong>Jedi‑Orden:</strong> Respektvoll, aber reserviert.</li>
-            <li><strong>Anakin Skywalker:</strong> Strategische, aber ideologische Spannung.</li>
           </ul>
         </section>
-
         <section id="persoenlichkeit">
           <h2 class="text-2xl font-semibold mb-4 border-b border-gray-700">Persönlichkeit</h2>
-          <p>Krayt war ein taktischer Einzelgänger ... nachdem das Imperium ausgerufen wurde, kehrte er sich ab.</p>
+          <p>Krayt war ein taktischer Einzelgänger ... nach Ausrufung des Imperiums kehrte er sich ab.</p>
         </section>
       </main>
 
       <!-- Sidebar rechts -->
       <aside class="lg:w-80 space-y-6">
-        <!-- Steckbrief -->
         <div class="info-box">
           <div class="info-box-header">Steckbrief</div>
           <div class="info-box-content">
@@ -93,18 +58,12 @@
               <tbody>
                 <tr><td class="font-medium py-1">Spezies</td><td>Mensch (Klon)</td></tr>
                 <tr><td class="font-medium py-1">Geschlecht</td><td>Männlich</td></tr>
-                <tr><td class="font-medium py-1">Haarfarbe</td><td>Schwarz / Grau</td></tr>
-                <tr><td class="font-medium py-1">Augen Farbe</td><td>Braun</td></tr>
-                <tr><td class="font-medium py-1">Größe</td><td>1,83 m</td></tr>
-                <tr><td class="font-medium py-1">Heimat</td><td>Kamino</td></tr>
-                <tr><td class="font-medium py-1">Stationierung</td><td>4th Flotte</td></tr>
-                <tr><td class="font-medium py-1">Position</td><td>Alpha ARC Sergeant</td></tr>
+                <!-- weitere Felder... -->
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- Inhaltsverzeichnis -->
         <div class="info-box">
           <div class="info-box-header">Inhaltsverzeichnis</div>
           <div class="info-box-content space-y-2">
@@ -117,10 +76,8 @@
       </aside>
     </div>
 
-    <footer class="mt-12 text-center text-sm text-gray-500">
-      © 2025 Bewerbung von Ares (Darius)
-    </footer>
+    <footer class="mt-12 text-center text-sm text-gray-500">© 2025 Bewerbung von Ares (Darius)</footer>
   </div>
-</body>
-</html>
+</body></html>
+
 
