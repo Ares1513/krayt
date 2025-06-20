@@ -1,230 +1,200 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="client-js sse-other">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alpha‑23 „Krayt“ – Jedipedia-Stil (Legends)</title>
-
-  <!-- Fandom‑Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet" />
-
-  <style>
-    /* —— Allgemeines Grunddesign —— */
-    :root {
-      --bg: #fff;
-      --text: #202122;
-      --link: #0b75bb;
-      --link-hover: #004a82;
-      --border: #a2a9b1;
-      --box-bg: #f8f9fa;
-      --header-bg: #d9dee3;
-    }
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
-
-    h1 {
-      font-family: 'Roboto Slab', serif;
-      font-size: 2.5rem;
-      margin-bottom: .3em;
-    }
-
-    h2 {
-      border-bottom: 1px solid var(--border);
-      margin-top: 1.5rem;
-      padding-bottom: .3em;
-    }
-
-    h3 {
-      font-weight: 700;
-      margin-top: 1em;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 2rem 0;
-    }
-
-    blockquote {
-      border-left: 4px solid var(--link);
-      margin: 1rem 0;
-      padding-left: 1rem;
-      color: #555;
-      font-style: italic;
-      background: #f0f4f8;
-    }
-
-    /* —— Inhaltsverzeichnis —— */
-    .toc {
-      background: var(--box-bg);
-      border: 1px solid var(--border);
-      padding: 1rem;
-      font-size: .9rem;
-    }
-    .toc h2 {
-      margin: 0 0 .8rem;
-      font-size: 1rem;
-    }
-    .toc ul {
-      list-style: decimal;
-      padding-left: 1.4rem;
-    }
-
-    /* —— Infobox —— */
-    .infobox {
-      width: 280px;
-      background: var(--box-bg);
-      border: 1px solid var(--border);
-      font-size: .9rem;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .infobox .title {
-      background: var(--header-bg);
-      padding: .6rem;
-      font-weight: 700;
-      font-size: 1rem;
-      text-align: center;
-    }
-    .infobox img {
-      display: block;
-      width: 100%;
-    }
-    .infobox .label-row {
-      display: flex;
-      padding: .5rem 1rem;
-      border-top: 1px solid var(--border);
-    }
-    .infobox .label {
-      width: 45%;
-      font-weight: 700;
-    }
-
-    /* —— Layout —— */
-    .page {
-      max-width: 1000px;
-      margin: auto;
-      padding: 2rem;
-    }
-    .layout {
-      display: flex;
-      gap: 2rem;
-    }
-    article {
-      flex: 1;
-      min-width: 0;
-    }
-
-    /* —— Legends-Icons —— */
-    .legend-tag {
-      display: inline-block;
-      background: #ff9e1b;
-      color: #fff;
-      font-size: .8rem;
-      padding: .1rem .4rem;
-      margin-left: .5rem;
-      border-radius: 2px;
-      vertical-align: middle;
-      text-transform: uppercase;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Alpha-23 „Krayt“ | Jedipedia | Fandom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  /* Basis-Reset & Schrift */
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #fff;
+    color: #222;
+    margin: 0; padding: 0;
+  }
+  a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Container */
+  #content {
+    max-width: 980px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  /* Titel */
+  h1.page-header__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+  }
+  /* Infobox rechts */
+  .infobox {
+    float: right;
+    width: 300px;
+    margin-left: 20px;
+    background: #f8f9fa;
+    border: 1px solid #aaa;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  .infobox h2 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+  .infobox dt {
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .infobox dd {
+    margin: 0 0 8px 0;
+  }
+  /* Tabs */
+  .tabs {
+    margin-top: 20px;
+    border-bottom: 2px solid #e3e3e3;
+    display: flex;
+    gap: 1em;
+  }
+  .tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    font-weight: 600;
+    background: #f4f4f4;
+    border-radius: 5px 5px 0 0;
+  }
+  .tab.active {
+    background: #fff;
+    border-color: #aaa #aaa #fff;
+  }
+  /* Content-Bereich unter Tabs */
+  .tab-content {
+    border: 1px solid #aaa;
+    padding: 15px;
+    background: #fff;
+    clear: both;
+  }
+  /* Zitat */
+  blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #ccc;
+    margin: 1em 0;
+    padding-left: 15px;
+  }
+  blockquote footer {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  /* Überschriften */
+  h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 3px;
+    margin-top: 1.5em;
+  }
+  /* Klarer Float */
+  .clear {
+    clear: both;
+  }
+</style>
 </head>
 <body>
-  <div class="page">
-    <!-- Titel & Legend-Tag -->
-    <h1>Alpha‑23 „Krayt“ <span class="legend-tag">Legends</span></h1>
 
-    <div class="layout">
-      <!-- Hauptinhalt -->
-      <article>
-        <!-- TOC -->
-        <nav class="toc">
-          <h2>Inhaltsverzeichnis</h2>
-          <ul>
-            <li><a href="#uebersicht">Übersicht</a></li>
-            <li><a href="#biografie">Biografie</a></li>
-            <li><a href="#beziehungen">Beziehungen</a></li>
-            <li><a href="#persoenlichkeit">Persönlichkeit</a></li>
-            <li><a href="#model">Model</a></li>
-            <li><a href="#schlusswort">Schlusswort</a></li>
-          </ul>
-        </nav>
+<div id="content">
 
-        <!-- Abschnitte -->
-        <section id="uebersicht">
-          <h2>Übersicht</h2>
-          <p>
-            Alpha‑23, Codename <strong>„Krayt“</strong>, ist ein ARC‑Sergeant aus der Großen Armee der Republik...
-          </p>
-        </section>
+  <h1 class="page-header__title">Alpha-23 „Krayt“</h1>
 
-        <section id="biografie">
-          <h2>Biografie</h2>
-          <h3>22 VSY – Schlacht um Kamino</h3>
-          <blockquote>„Still und tödlich lauerte er im Verborgenen…“</blockquote>
-          <p>Als erstes wurde er reaktiviert, um die Klonanlagen zu verteidigen…</p>
+  <!-- Infobox rechts -->
+  <aside class="infobox" role="complementary" aria-label="Infobox">
+    <h2>Alpha Advanced Recon Commando</h2>
+    <dl>
+      <dt>Spitzname</dt><dd>A-23, Krayt</dd>
+      <dt>Rolle</dt><dd>Strategischer Soldat, Berater</dd>
+      <dt>Armee</dt><dd>Große Armee der Republik</dd>
+      <dt>Einsätze</dt><dd>Klonskriege, Kamino, Korriban Prime, Rhen Var</dd>
+      <dt>Eigenschaften</dt><dd>Strategisch, diszipliniert, unabhängig</dd>
+    </dl>
+  </aside>
 
-          <hr>
+  <!-- Tabs -->
+  <nav class="tabs" role="tablist">
+    <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-legends" id="tab-legends-btn">Legends</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-kanon" id="tab-kanon-btn">Kanon</button>
+  </nav>
 
-          <h3>22 VSY – Korriban Prime</h3>
-          <blockquote>„Seit jenem Absturz …“</blockquote>
-          <p>Er überlebte allein und führte den Rückzug in feindliches Gebiet…</p>
+  <!-- Tab-Inhalte -->
+  <section id="tab-legends" class="tab-content" role="tabpanel" aria-labelledby="tab-legends-btn">
+    <p><strong>Alpha-23</strong>, genannt A-23 oder Krayt, war ein Alpha Advanced Recon Commando in der Großen Armee der Republik. Während der Klonkriege begleitete er General Anakin Skywalker bei zahlreichen Einsätzen. A-23 „Krayt“ galt als strategisch denkender, disziplinierter Soldat, der bevorzugt unabhängig oder in kleinen Trupps operierte. Trotz seiner Vorliebe für Einzeloperationen wurde er Skywalker als Berater zugeteilt. Anfangs fiel es Krayt schwer, sich dem Führungsstil des Jedi-Generals unterzuordnen. Er setzte zwar auf eigene Taktiken, lernte jedoch, Skywalkers spontanen Entscheidungen und riskanten Manövern zu vertrauen.</p>
 
-          <hr>
+    <h2>Biografie</h2>
 
-          <h3>21 VSY – Rhen Var</h3>
-          <blockquote>„Ihre Taktik …“</blockquote>
-          <p>Er widerstand auf dem Eisplaneten und veränderte das Schlachtfeld strategisch…</p>
-        </section>
+    <h3>22 VSY – Schlacht um Kamino</h3>
+    <blockquote>
+      „Still und tödlich lauerte er im Verborgenen, geduldig und unbemerkt, bis der Moment zum Zuschlagen gekommen war.“<br />
+      <footer>— Ein Jedi General über Alpha-23 „Krayt“</footer>
+    </blockquote>
+    <p>Nach dem Erwachen aus der Stasis handelte Alpha-23 „Krayt“ sofort eigenständig. Ohne auf Befehle zu warten, machte er sich auf den Weg, um wichtige Verteidigungspositionen auf Kamino zu sichern. Dabei nutzte er seine Kenntnisse über das Gelände, um feindliche Späher und Saboteure im Geheimen auszuschalten. Krayt infiltrierte kritische Kontrollpunkte, deaktivierte feindliche Überwachungssysteme und sabotierte gegnerische Landungszonen, um den Ansturm zu verzögern. Seine Aktionen verliefen meist im Verborgenen und verschafften Kamino wertvolle Zeit, damit die Verteidigung organisiert werden konnte.</p>
 
-        <section id="beziehungen">
-          <h2>Beziehungen</h2>
-          <ul>
-            <li><strong>Kanzler Palpatine:</strong> Misstrauen gegenüber politischen Führern.</li>
-            <li><strong>Anakin Skywalker:</strong> Respektvolle, aber distanzierte militärische Bindung.</li>
-            <li><strong>Jedi‑Orden:</strong> Anerkennung ihrer Fähigkeiten, aber kein uneingeschränkter Gehorsam.</li>
-          </ul>
-        </section>
+    <h3>22 VSY – Korriban Prime</h3>
+    <blockquote>
+      „Seit jenem Absturz auf Korriban Prime habe ich ihn nie wieder lachen hören.“<br />
+      <footer>— Ein Veteran der 501. Legion über Alpha-23 „Krayt“</footer>
+    </blockquote>
+    <p>Während der Schlacht um Korriban Prime raste eine unkontrollierte Munificent der Separatisten direkt in die Venator, auf der sich General Anakin Skywalker und Alpha-23 „Krayt“ befanden. Die Kollision richtete verheerende Schäden an, löste Explosionen auf dem Deck aus und ließ das Flaggschiff schnell an Kampfkraft verlieren. Krayt und drei weitere Klonsoldaten wurden in eine Rettungskapsel evakuiert, um das sinkende Schiff zu verlassen. Doch die Kapsel wurde bereits kurz nach dem Absprung von feindlichem Feuer getroffen. Die Triebwerke wurden beschädigt, die Kapsel verlor die Kontrolle und stürzte auf die Oberfläche des Planeten ab. Der harte Aufprall schleuderte Krayt gegen die Innenwand der Kapsel, während scharfe Metalltrümmer durch seine rechte Oberschenkelrüstung drangen und ein Loch rissen. Sein Kama fing durch Funkenflug Feuer und brannte. Trotz der Verletzungen bewahrte Alpha-23 Ruhe, löschte die Flammen, half seinen Kameraden und organisierte den Rückzug aus dem Absturzgebiet.</p>
 
-        <section id="persoenlichkeit">
-          <h2>Persönlichkeit</h2>
-          <p>
-            Stoisch, diszipliniert und strategisch. Er stellt Befehle infrage, wenn sie die Mission gefährden...
-          </p>
-        </section>
+    <h3>21 VSY – Rhen Var</h3>
+    <blockquote>
+      „Mit allem Respekt, General, Ihre Taktik wäre effektiver, wenn wir uns in einer Holosimulation befänden. Aber auf Rhen Var bedeutet ein Frontalangriff auf befestigte Höhen nur eins, Verluste, bevor wir überhaupt den ersten Schuss abgeben.“<br />
+      <footer>— Alpha-23 zu Anakin Skywalker</footer>
+    </blockquote>
+    <p>Während der Operation „Sturmzahn“ sollte ein Separatisten-Kommandozentrum auf dem eisigen Planeten Rhen Var ausgeschaltet werden. Skywalker favorisierte einen direkten Angriff über das offene Feld unter dem Schutz eines orbitalen Ablenkungsfeuers. ARC-Soldat A-23 „Krayt“, zuständig für Aufklärung und Einsatzplanung, widersprach entschlossen. Er wies auf feindliche Sensorfelder, den Höhenvorteil der Droiden und das offene Gelände als gravierende taktische Nachteile hin. Trotz anfänglicher Missbilligung ließ sich Skywalker überzeugen. Krayts Alternativplan wurde umgesetzt. Mit minimalen Verlusten und maximalem Erfolg.</p>
 
-        <section id="model">
-          <h2>Model</h2>
-          <img src="https://i.imgur.com/CHuj739.png" alt="Modelansicht" style="max-width: 300px; margin: 1rem 0;">
-          <p>Alle der Einheit zugewiesenen Attachments – unverändert.</p>
-        </section>
+    <h2>Rolle innerhalb der 501st Legion</h2>
+    <p>Nach der Mission auf Korriban Prime wurde Krayt in zahlreichen kritischen Einsätzen der 501st Legion eingesetzt, häufig in geheimer oder inoffizieller Funktion. Seine Rolle verlagerte sich zunehmend vom Frontsoldaten zum Spezialisten für asymmetrische Kriegsführung, insbesondere für verdeckte Operationen gegen separatistische Kommandostrukturen. Klontruppen unter seinem Kommando beschrieben ihn als effizient, unnachgiebig und bereit, persönliche Risiken einzugehen, um die Mission zu erfüllen – um jeden Preis. Sein Ruf innerhalb der Armee war geprägt von Präzision, Strategie und tödlicher Zielstrebigkeit, ganz im Sinne des Krayt-Drachen, dessen Namen er trug.</p>
 
-        <section id="schlusswort">
-          <h2>Schlusswort</h2>
-          <p>Vielen Dank fürs Lesen! Skin abgesegnet von <strong>@Nymphix</strong>, genehmigt von <strong>@MaD‑MaX</strong>.</p>
-        </section>
-      </article>
+    <h2>Trivia</h2>
+    <p>Der Spitzname „Krayt“ wurde ihm nicht offiziell verliehen. Er entstand aus seiner Vorliebe für Einzeloperationen und seinem Verhalten, das an einen Krayt-Drachen erinnerte.<br />
+    Laut inoffiziellen Quellen war Krayt einer der wenigen ARC-Soldaten, die Widerspruch gegen die Befehle eines Jedi-Generals einreichten.</p>
+  </section>
 
-      <!-- Infobox rechts -->
-      <aside class="infobox">
-        <div class="title">Alpha‑23 „Krayt“</div>
-        <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23 – Krayt">
-        <div class="label-row"><span class="label">Spezies</span><span>Klon (Mensch)</span></div>
-        <div class="label-row"><span class="label">Rang</span><span>ARC‑Sergeant</span></div>
-        <div class="label-row"><span class="label">Station</span><span>4th Flotte</span></div>
-        <div class="label-row"><span class="label">Größe</span><span>1,83 m</span></div>
-        <div class="label-row"><span class="label">Bew.</span><span>DC‑17, Jetpack</span></div>
-        <div class="label-row"><span class="label">Einsätze</span><span>Kamino, Korriban Prime...</span></div>
-      </aside>
-    </div>
-  </div>
+  <section id="tab-kanon" class="tab-content" role="tabpanel" aria-labelledby="tab-kanon-btn" hidden>
+    <p><em>Der Kanon-Tab ist leer oder noch nicht verfügbar.</em></p>
+  </section>
+
+  <div class="clear"></div>
+</div>
+
+<script>
+  // Tab-Switching (Legends / Kanon)
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Entferne aktive Klassen
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      contents.forEach(c => c.hidden = true);
+
+      // Aktiviere angeklickten Tab
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const id = tab.getAttribute('aria-controls');
+      document.getElementById(id).hidden = false;
+    });
+  });
+</script>
+
 </body>
 </html>
-
