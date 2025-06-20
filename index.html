@@ -1,122 +1,124 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jedipedia – Alpha‑23 „Krayt“</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Wiki-Box */
-    .wiki-box { background: #1f2937; border: 1px solid #374151; border-radius: .5rem; }
-    .wiki-header { background: #111827; padding: .5rem; border-bottom: 1px solid #374151; }
+    /* Jedipedia-Tab-Stil */
+    .tab-link {
+      @apply px-4 py-2 bg-gray-800 text-gray-400 hover:text-gray-100 border-b-2 border-transparent;
+    }
+    .tab-link.active {
+      @apply text-white border-blue-400;
+    }
+    /* Steckbrief-Box */
+    .info-box {
+      background: #2f2f2f;
+      border: 1px solid #444;
+      border-radius: 0.375rem;
+    }
+    .info-box-header {
+      background: #1f1f1f;
+      padding: 0.5rem;
+      border-bottom: 1px solid #444;
+      font-weight: bold;
+      color: #ccc;
+    }
+    .info-box-content {
+      padding: 0.75rem;
+      color: #ddd;
+    }
   </style>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans leading-relaxed">
-  <div class="container mx-auto py-8 px-4 max-w-6xl">
-    <!-- Kopf -->
-    <header class="mb-8 text-center">
-      <h1 class="text-4xl font-bold text-white mb-2">Alpha‑23 „Krayt“</h1>
-      <img src="https://i.imgur.com/EXVRzlm.png" alt="Logo" class="mx-auto w-48"/>
+<body class="bg-gray-900 text-gray-200 font-sans leading-normal">
+  <div class="container mx-auto p-6 max-w-6xl">
+    <!-- Titel & Tab-Leiste -->
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold text-white inline-block mr-6">Alpha‑23 „Krayt“</h1>
+      <nav class="inline-block align-bottom">
+        <a href="#overview" class="tab-link active">Übersicht</a>
+        <a href="#biografie" class="tab-link">Biografie</a>
+        <a href="#beziehungen" class="tab-link">Beziehungen</a>
+        <a href="#persoenlichkeit" class="tab-link">Persönlichkeit</a>
+      </nav>
     </header>
 
     <div class="flex flex-col lg:flex-row gap-8">
-      <!-- Hauptinhalt -->
-      <main class="flex-1 lg:order-1 space-y-12">
-        <!-- Biografie -->
-        <section id="biografie">
-          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Biografie</h2>
-          <article class="mb-6">
-            <h3 class="text-xl font-semibold mb-2">22 VSY – Schlacht um Kamino</h3>
-            <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
-              „Still und tödlich lauerte er im Verborgenen...“
-            </blockquote>
-            <p>Nach dem Erwachen aus der Stasis handelte Krayt sofort eigenständig…</p>
-          </article>
-          <article class="mb-6">
-            <h3 class="text-xl font-semibold mb-2">22 VSY – Korriban Prime</h3>
-            <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
-              „Seit jenem Absturz auf Korriban Prime habe ich ihn nie wieder lachen hören.“
-            </blockquote>
-            <p>Während der Schlacht stürzte Krayt ab…</p>
-          </article>
-          <article>
-            <h3 class="text-xl font-semibold mb-2">21 VSY – Rhen Var</h3>
-            <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
-              „Ihre Taktik wäre effektiver in einer Holosimulation.“
-            </blockquote>
-            <p>Hier überzeugte er Skywalker von seiner Strategie…</p>
-          </article>
+      <!-- Inhalstext**
+      <main class="flex-1 space-y-10">
+        <section id="overview">
+          <p>Guten Tag liebe Community, hiermit bewerbe ich mich als Standard‑CC ...</p>
         </section>
 
-        <!-- Beziehungen -->
+        <section id="biografie">
+          <h2 class="text-2xl font-semibold mb-4 border-b border-gray-700">Biografie</h2>
+          <!-- Beispielartikel -->
+          <article class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">22 VSY – Schlacht um Kamino</h3>
+            <blockquote class="pl-4 italic border-l-4 border-blue-400 mb-2">
+              „Still und tödlich lauerte er im Verborgenen...“
+            </blockquote>
+            <p>Nach dem Erwachen aus der Stasis handelte Krayt sofort ...</p>
+          </article>
+          <!-- Weitere Artikel analog -->
+        </section>
+
         <section id="beziehungen">
-          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Beziehungen</h2>
+          <h2 class="text-2xl font-semibold mb-4 border-b border-gray-700">Beziehungen</h2>
           <ul class="list-disc list-inside space-y-2">
             <li><strong>Kanzler Palpatine:</strong> Skepsis gegenüber politischer Kontrolle.</li>
-            <li><strong>Jedi‑Orden:</strong> Respekt, aber keine blinde Gefolgschaft.</li>
-            <li><strong>Anakin Skywalker:</strong> Respektvolle, wenn auch ideologisch gespannte Beziehung.</li>
-            <li><strong>Zivilisten:</strong> Pragmatismus über Empathie.</li>
+            <li><strong>Jedi‑Orden:</strong> Respektvoll, aber reserviert.</li>
+            <li><strong>Anakin Skywalker:</strong> Strategische, aber ideologische Spannung.</li>
           </ul>
         </section>
 
-        <!-- Persönlichkeit -->
         <section id="persoenlichkeit">
-          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Persönlichkeit</h2>
-          <p>Krayt war ein mandalorianisch geprägter Taktiker, hinterfragte Befehle und war loyal zur Republik – nicht zum Imperium, dem er den Rücken kehrte.</p>
-        </section>
-
-        <!-- Schlusswort -->
-        <section id="schlusswort">
-          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Schlusswort</h2>
-          <p>Vielen Dank! Skin abgesegnet von <strong>@Nymphix</strong>, Einreichung genehmigt durch <strong>@MaD‑MaX</strong>.</p>
+          <h2 class="text-2xl font-semibold mb-4 border-b border-gray-700">Persönlichkeit</h2>
+          <p>Krayt war ein taktischer Einzelgänger ... nachdem das Imperium ausgerufen wurde, kehrte er sich ab.</p>
         </section>
       </main>
 
-      <!-- Sidebar -->
-      <aside class="lg:w-80 lg:order-2 space-y-8">
-        <!-- Inhaltsverzeichnis -->
-        <div class="wiki-box">
-          <div class="wiki-header">
-            <h3 class="text-lg font-medium text-white">Inhaltsverzeichnis</h3>
-          </div>
-          <nav class="p-4 space-y-2">
-            <a href="#biografie" class="block hover:text-white">Biografie</a>
-            <a href="#beziehungen" class="block hover:text-white">Beziehungen</a>
-            <a href="#persoenlichkeit" class="block hover:text-white">Persönlichkeit</a>
-            <a href="#schlusswort" class="block hover:text-white">Schlusswort</a>
-          </nav>
-        </div>
-
-        <!-- Steckbrief Box -->
-        <div class="wiki-box">
-          <div class="wiki-header">
-            <h3 class="text-lg font-medium text-white">Steckbrief</h3>
-          </div>
-          <div class="p-4 space-y-4">
-            <div class="text-center">
-              <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23 Krayt" class="mx-auto w-40 rounded shadow"/>
+      <!-- Sidebar rechts -->
+      <aside class="lg:w-80 space-y-6">
+        <!-- Steckbrief -->
+        <div class="info-box">
+          <div class="info-box-header">Steckbrief</div>
+          <div class="info-box-content">
+            <div class="text-center mb-4">
+              <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23 Krayt" class="mx-auto w-32 rounded shadow"/>
             </div>
             <table class="w-full text-sm">
               <tbody>
-                <tr><td class="font-medium">Spezies</td><td>Mensch (Klon)</td></tr>
-                <tr><td class="font-medium">Geschlecht</td><td>Männlich</td></tr>
-                <tr><td class="font-medium">Haarfarbe</td><td>Schwarz / Grau</td></tr>
-                <tr><td class="font-medium">Augenfarbe</td><td>Braun</td></tr>
-                <tr><td class="font-medium">Größe</td><td>1,83 m</td></tr>
-                <tr><td class="font-medium">Heimat</td><td>Kamino</td></tr>
-                <tr><td class="font-medium">Stationierung</td><td>4th Flotte</td></tr>
-                <tr><td class="font-medium">Position</td><td>Alpha ARC Sergeant</td></tr>
-                <tr><td class="font-medium">Bewaffnung</td><td>Wester M5, Valken 38x…</td></tr>
+                <tr><td class="font-medium py-1">Spezies</td><td>Mensch (Klon)</td></tr>
+                <tr><td class="font-medium py-1">Geschlecht</td><td>Männlich</td></tr>
+                <tr><td class="font-medium py-1">Haarfarbe</td><td>Schwarz / Grau</td></tr>
+                <tr><td class="font-medium py-1">Augen Farbe</td><td>Braun</td></tr>
+                <tr><td class="font-medium py-1">Größe</td><td>1,83 m</td></tr>
+                <tr><td class="font-medium py-1">Heimat</td><td>Kamino</td></tr>
+                <tr><td class="font-medium py-1">Stationierung</td><td>4th Flotte</td></tr>
+                <tr><td class="font-medium py-1">Position</td><td>Alpha ARC Sergeant</td></tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- Inhaltsverzeichnis -->
+        <div class="info-box">
+          <div class="info-box-header">Inhaltsverzeichnis</div>
+          <div class="info-box-content space-y-2">
+            <a href="#overview" class="block hover:text-white">Übersicht</a>
+            <a href="#biografie" class="block hover:text-white">Biografie</a>
+            <a href="#beziehungen" class="block hover:text-white">Beziehungen</a>
+            <a href="#persoenlichkeit" class="block hover:text-white">Persönlichkeit</a>
           </div>
         </div>
       </aside>
     </div>
 
-    <!-- Footer -->
-    <footer class="mt-12 text-center text-sm text-gray-600">
-      © 2025 – Bewerbung von Ares (Darius)
+    <footer class="mt-12 text-center text-sm text-gray-500">
+      © 2025 Bewerbung von Ares (Darius)
     </footer>
   </div>
 </body>
