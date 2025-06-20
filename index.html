@@ -3,132 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alpha‑23 „Krayt“ – Datenbankeintrag</title>
+  <title>Alpha‑23 „Krayt“ – Jedipedia-Stil (Legends)</title>
 
-  <!-- Import Sci-Fi Schriftarten -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Fandom‑Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet" />
 
   <style>
+    /* —— Allgemeines Grunddesign —— */
     :root {
-      --bg: #0c0f14;
-      --card: #1a1e26;
-      --accent: #007acc;
-      --text: #cdd9e5;
-      --border: #2b2f36;
-      --danger: #ff4e4e;
+      --bg: #fff;
+      --text: #202122;
+      --link: #0b75bb;
+      --link-hover: #004a82;
+      --border: #a2a9b1;
+      --box-bg: #f8f9fa;
+      --header-bg: #d9dee3;
     }
     body {
       margin: 0;
+      font-family: 'Open Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
     }
-    h1, h2, h3 {
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
     h1 {
-      font-size: 2.2rem;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
+      font-family: 'Roboto Slab', serif;
+      font-size: 2.5rem;
+      margin-bottom: .3em;
     }
+
     h2 {
-      font-size: 1.4rem;
       border-bottom: 1px solid var(--border);
-      margin-top: 2rem;
-      margin-bottom: 0.8rem;
-    }
-    h3 {
-      font-size: 1.1rem;
       margin-top: 1.5rem;
-      color: #8eb5dd;
+      padding-bottom: .3em;
     }
 
-    .page {
-      max-width: 1200px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    .content-wrap {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    article {
-      flex: 1 1 0;
-    }
-
-    .infobox {
-      background: var(--card);
-      border: 2px solid var(--accent);
-      border-radius: 6px;
-      width: 320px;
-      font-size: 0.9rem;
-      box-shadow: 0 0 10px #007acc44;
-    }
-
-    .pi-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      background: #000;
-      color: var(--accent);
-      text-align: center;
-      padding: 0.8rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pi-image img {
-      width: 100%;
-      display: block;
-    }
-
-    .pi-data {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.6rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .toc {
-      background: var(--card);
-      border-left: 4px solid var(--accent);
-      padding: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .toc ul {
-      list-style: decimal;
-      padding-left: 1.5rem;
-    }
-
-    blockquote {
-      border-left: 3px solid var(--accent);
-      padding-left: 1rem;
-      font-style: italic;
-      margin: 1rem 0;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .center-img {
-      display: block;
-      margin: 1rem auto;
-      width: 240px;
-      border-radius: 0.4rem;
-      border: 2px solid var(--accent);
+    h3 {
+      font-weight: 700;
+      margin-top: 1em;
     }
 
     hr {
@@ -137,84 +52,179 @@
       margin: 2rem 0;
     }
 
-    @media (max-width: 1000px) {
-      .content-wrap {
-        flex-direction: column;
-      }
-      .infobox {
-        width: 100%;
-      }
+    blockquote {
+      border-left: 4px solid var(--link);
+      margin: 1rem 0;
+      padding-left: 1rem;
+      color: #555;
+      font-style: italic;
+      background: #f0f4f8;
+    }
+
+    /* —— Inhaltsverzeichnis —— */
+    .toc {
+      background: var(--box-bg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      font-size: .9rem;
+    }
+    .toc h2 {
+      margin: 0 0 .8rem;
+      font-size: 1rem;
+    }
+    .toc ul {
+      list-style: decimal;
+      padding-left: 1.4rem;
+    }
+
+    /* —— Infobox —— */
+    .infobox {
+      width: 280px;
+      background: var(--box-bg);
+      border: 1px solid var(--border);
+      font-size: .9rem;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .infobox .title {
+      background: var(--header-bg);
+      padding: .6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .infobox img {
+      display: block;
+      width: 100%;
+    }
+    .infobox .label-row {
+      display: flex;
+      padding: .5rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .infobox .label {
+      width: 45%;
+      font-weight: 700;
+    }
+
+    /* —— Layout —— */
+    .page {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .layout {
+      display: flex;
+      gap: 2rem;
+    }
+    article {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* —— Legends-Icons —— */
+    .legend-tag {
+      display: inline-block;
+      background: #ff9e1b;
+      color: #fff;
+      font-size: .8rem;
+      padding: .1rem .4rem;
+      margin-left: .5rem;
+      border-radius: 2px;
+      vertical-align: middle;
+      text-transform: uppercase;
     }
   </style>
 </head>
-
 <body>
   <div class="page">
-    <h1>Alpha‑23 „Krayt“</h1>
+    <!-- Titel & Legend-Tag -->
+    <h1>Alpha‑23 „Krayt“ <span class="legend-tag">Legends</span></h1>
 
-    <div class="content-wrap">
-      <!-- Inhalt -->
+    <div class="layout">
+      <!-- Hauptinhalt -->
       <article>
-        <div class="toc">
+        <!-- TOC -->
+        <nav class="toc">
           <h2>Inhaltsverzeichnis</h2>
           <ul>
             <li><a href="#uebersicht">Übersicht</a></li>
-            <li><a href="#einsaetze">Einsätze</a></li>
+            <li><a href="#biografie">Biografie</a></li>
+            <li><a href="#beziehungen">Beziehungen</a></li>
             <li><a href="#persoenlichkeit">Persönlichkeit</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#schlusswort">Schlusswort</a></li>
           </ul>
-        </div>
+        </nav>
 
+        <!-- Abschnitte -->
         <section id="uebersicht">
           <h2>Übersicht</h2>
           <p>
-            Alpha‑23, Codename <strong>„Krayt“</strong>, ist ein genetisch verstärkter Klonkrieger der <em>Alpha‑ARC‑Serie</em>,
-            ausgebildet unter Jango Fett. Krayt gilt als taktisch diszipliniert, schweigsam und tödlich effizient.
+            Alpha‑23, Codename <strong>„Krayt“</strong>, ist ein ARC‑Sergeant aus der Großen Armee der Republik...
           </p>
         </section>
 
-        <section id="einsaetze">
-          <h2>Bekannte Einsätze</h2>
-          <h3>Schlacht um Kamino (22 VSY)</h3>
-          <blockquote>„Ich handle nicht aus Loyalität, sondern aus Kalkül.“</blockquote>
-          <p>Während der Separatisten-Invasion wurde Alpha‑23 erstmals reaktiviert …</p>
+        <section id="biografie">
+          <h2>Biografie</h2>
+          <h3>22 VSY – Schlacht um Kamino</h3>
+          <blockquote>„Still und tödlich lauerte er im Verborgenen…“</blockquote>
+          <p>Als erstes wurde er reaktiviert, um die Klonanlagen zu verteidigen…</p>
 
-          <h3>Korriban Prime (22 VSY)</h3>
-          <blockquote>„Krayt hat nie gezögert – selbst im Angesicht der Sith.“</blockquote>
-          <p>Als einziger Überlebender der Einheit Delta-X1 führte er die Mission zu Ende.</p>
+          <hr>
+
+          <h3>22 VSY – Korriban Prime</h3>
+          <blockquote>„Seit jenem Absturz …“</blockquote>
+          <p>Er überlebte allein und führte den Rückzug in feindliches Gebiet…</p>
+
+          <hr>
+
+          <h3>21 VSY – Rhen Var</h3>
+          <blockquote>„Ihre Taktik …“</blockquote>
+          <p>Er widerstand auf dem Eisplaneten und veränderte das Schlachtfeld strategisch…</p>
+        </section>
+
+        <section id="beziehungen">
+          <h2>Beziehungen</h2>
+          <ul>
+            <li><strong>Kanzler Palpatine:</strong> Misstrauen gegenüber politischen Führern.</li>
+            <li><strong>Anakin Skywalker:</strong> Respektvolle, aber distanzierte militärische Bindung.</li>
+            <li><strong>Jedi‑Orden:</strong> Anerkennung ihrer Fähigkeiten, aber kein uneingeschränkter Gehorsam.</li>
+          </ul>
         </section>
 
         <section id="persoenlichkeit">
           <h2>Persönlichkeit</h2>
           <p>
-            Stoisch, autoritär, aber taktisch flexibel. Krayt stellt Befehle nie infrage – außer sie gefährden das
-            Gesamtsystem. Trotz Bindung zur Republik wurde seine Loyalität nach <em>Order 66</em> fragil.
+            Stoisch, diszipliniert und strategisch. Er stellt Befehle infrage, wenn sie die Mission gefährden...
           </p>
         </section>
 
-        <section id="kontakt">
-          <h2>Kontakt</h2>
-          <ul>
-            <li>VyHub: <a href="#">Alpha‑23</a></li>
-            <li>Discord: <code>darius.2192</code></li>
-            <li>TS: Ares 🎮</li>
-          </ul>
+        <section id="model">
+          <h2>Model</h2>
+          <img src="https://i.imgur.com/CHuj739.png" alt="Modelansicht" style="max-width: 300px; margin: 1rem 0;">
+          <p>Alle der Einheit zugewiesenen Attachments – unverändert.</p>
+        </section>
+
+        <section id="schlusswort">
+          <h2>Schlusswort</h2>
+          <p>Vielen Dank fürs Lesen! Skin abgesegnet von <strong>@Nymphix</strong>, genehmigt von <strong>@MaD‑MaX</strong>.</p>
         </section>
       </article>
 
-      <!-- Infobox -->
+      <!-- Infobox rechts -->
       <aside class="infobox">
-        <div class="pi-title">ALPHA‑23 – KRAYT</div>
-        <div class="pi-image"><img src="https://i.imgur.com/pq696KI.png" alt="Krayt Model"></div>
-        <div class="pi-data"><span>Spezies</span><span>Klon</span></div>
-        <div class="pi-data"><span>Rang</span><span>ARC Sergeant</span></div>
-        <div class="pi-data"><span>Größe</span><span>1,83 m</span></div>
-        <div class="pi-data"><span>Station</span><span>4th Flotte</span></div>
-        <div class="pi-data"><span>Bewaffnung</span><span>DC‑17 / Jetpack</span></div>
-        <div class="pi-data"><span>Primärrolle</span><span>Spezialeinheit</span></div>
-        <div class="pi-data"><span>Letzte Sichtung</span><span>Rhen Var</span></div>
+        <div class="title">Alpha‑23 „Krayt“</div>
+        <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23 – Krayt">
+        <div class="label-row"><span class="label">Spezies</span><span>Klon (Mensch)</span></div>
+        <div class="label-row"><span class="label">Rang</span><span>ARC‑Sergeant</span></div>
+        <div class="label-row"><span class="label">Station</span><span>4th Flotte</span></div>
+        <div class="label-row"><span class="label">Größe</span><span>1,83 m</span></div>
+        <div class="label-row"><span class="label">Bew.</span><span>DC‑17, Jetpack</span></div>
+        <div class="label-row"><span class="label">Einsätze</span><span>Kamino, Korriban Prime...</span></div>
       </aside>
     </div>
   </div>
 </body>
 </html>
+
