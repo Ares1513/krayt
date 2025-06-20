@@ -1,6 +1,97 @@
-<!DOCTYPE html>
+<!DOCTYPE html>More actions
+<!DOCTYPE html>Add commentMore actions
 <html lang="de">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jedipedia – Alpha‑23 „Krayt“</title>
+
+<!-- Orbitron für dezente Star‑Wars‑Typo -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* === Grundlayout & Schrift === */
+:root{
+  --accent:#ffe81f;   /* gelb */
+  --link:#81d4fa;     /* hell‑cyan */
+  --bg:#000;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Orbitron',sans-serif;
+  background:url('datapad-bg.jpg') no-repeat center/cover fixed var(--bg);
+  color:#eee;
+  line-height:1.55;
+}
+
+/* === Rahmen & Container === */
+main{
+  max-width:1100px;
+  margin:40px auto;
+  display:flex;
+  gap:24px;
+  padding:0 16px;
+}
+.content{flex:1 1 0;}
+.infobox{
+  width:300px;
+  background:rgba(20,20,35,.85);
+  border:2px solid #222;
+  border-radius:8px;
+  padding:16px;
+  backdrop-filter:blur(2px);
+}
+
+/* === Überschriften === */
+h1{font-size:2.4rem;color:var(--accent);margin-bottom:.4em}
+h2{color:var(--accent);margin:.8em 0 .4em}
+h3{color:#00bfff;margin:.6em 0 .2em;font-size:1.1rem}
+blockquote{
+  border-left:4px solid #00bfff;
+  padding-left:12px;
+  margin:8px 0 16px;
+  color:#ccc;
+  font-style:italic;
+}
+
+/* === Infotabelle === */
+.infobox img{width:100%;border-radius:6px;margin-bottom:8px}
+.infobox table{width:100%;border-collapse:collapse;font-size:.9rem}
+.infobox td{padding:4px 6px;vertical-align:top;border-bottom:1px solid #333}
+.infobox td.label{color:var(--link);font-weight:700;width:38%}
+
+/* === Inhaltsverzeichnis === */
+#toc{
+  background:rgba(20,20,40,.8);
+  border:1px solid #333;
+  padding:12px;
+  margin-bottom:24px;
+  border-radius:6px;
+}
+#toc h2{
+  font-size:1.1rem;
+  margin-bottom:.4em;
+}
+#toc ul{list-style:none;padding-left:0}
+#toc a{
+  color:var(--link);
+  text-decoration:none;
+  font-size:.95rem;
+}
+#toc a:hover{text-decoration:underline}
+
+/* === Listen & Tabellen im Content === */
+ul{padding-left:1.2em;margin:6px 0 10px}
+table{width:100%;border-collapse:collapse;margin:18px 0;background:rgba(20,20,35,.8)}
+td{border:1px solid #222;padding:8px}
+td:first-child{color:var(--link);font-weight:600;width:28%}
+
+/* === Responsive Anpassungen === */
+@media(max-width:900px){
+  main{flex-direction:column}
+  .infobox{width:100%;order:-1;margin-bottom:20px}
+}
+</style>
   <meta charset="UTF-8">
   <title>Alpha-23 „Krayt“ – Jedipedia-Stil</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap">
@@ -72,7 +163,18 @@
     }
   </style>
 </head>
+
 <body>
+
+<main>
+
+  <!-- ===== Textbereich ===== -->
+  <article class="content">
+    <h1>Alpha‑23 „Krayt“</h1>
+
+    <!-- Inhaltsverzeichnis -->
+    <nav id="toc">
+      <h2>Inhaltsverzeichnis</h2>
   <div class="container">
     <main>
       <h1>Alpha‑23 „Krayt“</h1>
@@ -90,10 +192,102 @@
       <h2 id="einsaetze">Bekannte Einsätze</h2>
       <blockquote>„Still und tödlich lauerte er im Verborgenen ...“ — Ein Jedi General</blockquote>
       <ul>
+        <li><a href="#biografie">Biografie</a></li>
+        <li><a href="#einsaetze">Bekannte Einsätze</a></li>
+        <li><a href="#rolle">Rolle in der 501st Legion</a></li>
+        <li><a href="#trivia">Trivia</a></li>
         <li>Schlacht um Kamino</li>
         <li>Korriban Prime</li>
         <li>Rhen Var</li>
       </ul>
+    </nav>
+
+    <!-- =========  BIOGRAFIE ========= -->
+    <h2 id="biografie">Alpha-23 „Krayt“,</h2>
+    <p><i>Alpha‑23, kurz A‑23 oder „Krayt“, war ein <b>Alpha Advanced Recon Commando</b> der Großen Armee der Republik. Seine Einsätze führten ihn häufig an die Seite von General Anakin Skywalker. Krayt galt als analytisch, beherrscht und bevorzugte Operationen in kleinen, hochspezialisierten Trupps.</i></p>
+
+    <!-- =========  EINSÄTZE ========= -->
+    <h2 id="einsaetze">Biografie</h2>
+
+    <h3>22 VSY – Schlacht um Kamino</h3>
+    <blockquote>„Still und tödlich lauerte er im Verborgenen, geduldig und unbemerkt, bis der Moment zum Zuschlagen gekommen war.“ — Ein Jedi General über Alpha-23 „Krayt“</blockquote>
+    <p>Nach dem Erwachen aus der Stasis handelte Alpha-23 „Krayt“ sofort eigenständig. Ohne auf Befehle zu warten, machte er sich auf, um wichtige Verteidigungspositionen auf Kamino zu sichern. Dabei nutzte er seine Kenntnisse über das Gelände, um feindliche Späher und Saboteure im Geheimen auszuschalten.
+Krayt infiltrierte kritische Kontrollpunkte, deaktivierte feindliche Überwachungssysteme und sabotierte feindliche Landungszonen, um den Ansturm zu verzögern. Seine Aktionen liefen meist im Verborgenen ab, wodurch er Kamino wertvolle Zeit verschaffte, damit die Verteidigung organisiert werden konnte.</p>
+
+    <h3>22 VSY – Korriban Prime</h3>
+    <blockquote>„Seit jenem Absturz auf Korriban Prime habe ich ihn nie wieder lachen hören.“
+— Ein Veteran der 501. Legion über Alpha-23 „Krayt“</blockquote>
+    <p>Während der Schlacht um Korriban Prime raste eine unkontrollierte Munificent der Separatisten direkt in die Venator, auf der General Anakin Skywalker und Alpha-23 „Krayt“ sich befanden. Die Kollision richtete verheerende Schäden an, löste Explosionen auf dem Deck aus und ließ das Flaggschiff schnell an Kampfkraft verlieren.
+Krayt und drei weitere Klonsoldaten wurden mit General Skywalker in eine Rettungskapsel evakuiert, um das sinkende Schiff zu verlassen. Doch die Kapsel wurde bereits kurz nach dem Absprung von feindlichem Feuer getroffen. Die Triebwerke wurden beschädigt, die Kapsel verlor an Kontrolle und stürzte auf die Oberfläche des Planetens ab.
+Der harte Aufprall schleuderte Krayt gegen die Innenwand der Kapsel, während scharfe Metalltrümmer durch seine rechte Oberschenkelrüstung drangen und ein Loch rissen. Sein Kama fing durch Funkenflug Feuer und brannte.
+Trotz der Verletzungen bewahrte Alpha-23 Ruhe, löschte die Flammen, half seinen Kameraden und organisierte den Rückzug aus dem Absturzgebiet.</p>
+
+    <h3>21 VSY – Rhen Var</h3>
+    <blockquote>„Mit allem Respekt … ein Frontalangriff auf Höhen bedeutet nur Verluste.“ – A‑23 zu Skywalker</blockquote>
+    <p>Während der Operation „Sturmzahn“ sollte ein Separatisten Kommandozentrum auf dem eisigen Planeten Rhen Var ausgeschaltet werden. Skywalker favorisierte einen direkten Angriff über das offene Feld unter dem Schutz eines orbitalen Ablenkungsfeuers.
+ARC Soldat A-23 „Krayt“, zuständig für Aufklärung und Einsatzplanung, widersprach entschlossen. Er wies auf feindliche Sensorfelder, den Höhenvorteil der Droiden und das offene Gelände als gravierende taktische Nachteile hin.
+Trotz anfänglicher Missbilligung ließ sich Skywalker überzeugen. Krayts Alternativplan wurde umgesetzt , mit minimalen Verlusten und maximalem Erfolg.</p>
+
+    <!-- =========  ROLLE ========= -->
+    <h2 id="rolle">Rolle in der 501st Legion</h2>
+    <p>Nach der Mission auf Korriban Prime wurde Krayt in zahlreichen kritischen Einsätzen der 501st Legion eingesetzt, häufig in geheimer oder inoffizieller Funktion. Seine Rolle verlagerte sich zunehmend vom Frontsoldaten zum Spezialisten für asymmetrische Kriegsführung, insbesondere für verdeckte Operationen gegen separatistische Kommandostrukturen.
+Klontruppen unter seinem Kommando beschrieben ihn als effizient, unnachgiebig und bereit, persönliche Risiken einzugehen, um die Mission zu erfüllen, um jeden Preis.
+Sein Ruf innerhalb der Armee war geprägt von Präzision, Strategie und tödlicher Zielstrebigkeit, ganz im Sinne des Krayt-Drachen, dessen Namen er trug.</p>
+
+    <!-- =========  TRIVIA ========= -->
+    <h2 id="trivia">Trivia</h2>
+    <ul>
+      <li>Der Spitzname „Krayt“ wurde ihm nicht offiziell verliehen. Er entstand aus seiner Vorliebe für Einzeloperationen und seinem Verhalten, das an einen Krayt-Drachen erinnerte</li>
+      <li>Laut inoffiziellen Quellen war Krayt einer der wenigen ARC Soldaten, die einen Widerspruch gegen die Befehle eines Jedi Generals einreichten.</li>
+    </ul>
+  </article>
+
+  <!-- ===== Infobox ===== -->
+  <aside class="infobox">
+    <img src="https://i.imgur.com/pq696KI.png" alt="Alpha-23 Krayt">
+    <table>
+      <tr><td colspan="2" style="text-align:center;font-weight:700;font-size:1.1rem">Steckbrief</td></tr>
+      <tr><td class="label">Spezies</td><td>Mensch (Klon)</td></tr>
+      <tr><td class="label">Geschlecht</td><td>Männlich</td></tr>
+      <tr><td class="label">Haarfarbe</td><td>Schwarz / Grau</td></tr>
+      <tr><td class="label">Augenfarbe</td><td>Braun</td></tr>
+      <tr><td class="label">Größe</td><td>1,83 m</td></tr>
+      <tr><td class="label">Heimat</td><td>Kamino</td></tr>
+      <tr><td class="label">Stationierung</td><td>4th Flotte</td></tr>
+      <tr><td class="label">Beruf/Tätigkeit</td><td>Klonkrieger</td></tr>
+      <tr><td class="label">Position</td><td>Alpha Advanced Recon Commando</td></tr>
+      <tr><td class="label">Dienstgrad</td><td>Sergeant</td></tr>
+      <tr><td class="label">Bewaffnung</td><td>Wester M5 Blastergewehr
+Valken 38x
+DC-17
+DC-17 Duals
+Wrist Rocket
+Wrist Blaster
+Wrist Flame
+Jetpack</td></tr>
+      <tr><td class="label">Bewaffnung</td><td>
+- Wester M5 Blastergewehr
+- Valken 38x
+- DC-17 Silent
+- DC-17 Silent Duals
+- Wrist Rocket
+- Wrist Blaster
+- Wrist Flame
+- Jetpack</td></tr>
+      <tr><td class="label">Fahrzeuge</td><td>LAAT/i „Witchcraft“, ARC‑170 Sternenjäger</td></tr>
+      <tr><td class="label">Zugehörigkeit</td><td>Galaktische Republik
+
+Große Armee der Republik
+4th Flotte</td></tr>
+      <tr><td class="label">Zugehörigkeit</td><td>
+- Galaktische Republik
+- Große Armee der Republik
+- 4th Flotte</td></tr>
+    </table>
+  </aside>
+
+</main>
+
       <h2 id="rolle">Rolle in der 501st Legion</h2>
       <p>Nach der Mission auf Korriban Prime ...</p>
       <h2 id="trivia">Trivia</h2>
