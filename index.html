@@ -1,126 +1,124 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Jedipedia – Alpha‑23 „Krayt“</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Aktiv-Tab-Styling */
-    .active-tab { @apply bg-gray-800 text-blue-300; }
+    /* Wiki-Box */
+    .wiki-box { background: #1f2937; border: 1px solid #374151; border-radius: .5rem; }
+    .wiki-header { background: #111827; padding: .5rem; border-bottom: 1px solid #374151; }
   </style>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans">
-  <div class="flex min-h-screen">
-    <!-- Seitenleiste / Inhaltsverzeichnis -->
-    <aside class="hidden md:block w-64 bg-gray-850 p-6 border-r border-gray-700">
-      <h2 class="text-xl font-bold text-white mb-4">Inhaltsverzeichnis</h2>
-      <nav class="space-y-2">
-        <a href="#steckbrief" class="block hover:text-white">Steckbrief</a>
-        <a href="#biografie" class="block hover:text-white">Biografie</a>
-        <a href="#beziehungen" class="block hover:text-white">Beziehungen</a>
-        <a href="#persoenlichkeit" class="block hover:text-white">Persönlichkeit</a>
-        <a href="#modellausgabe" class="block hover:text-white">Model</a>
-        <a href="#schlusswort" class="block hover:text-white">Schlusswort</a>
-      </nav>
-    </aside>
+<body class="bg-gray-900 text-gray-200 font-sans leading-relaxed">
+  <div class="container mx-auto py-8 px-4 max-w-6xl">
+    <!-- Kopf -->
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-white mb-2">Alpha‑23 „Krayt“</h1>
+      <img src="https://i.imgur.com/EXVRzlm.png" alt="Logo" class="mx-auto w-48"/>
+    </header>
 
-    <main class="flex-1 p-8 max-w-4xl mx-auto">
-      <!-- Header -->
-      <header class="mb-8 text-center">
-        <h1 class="text-4xl font-bold text-white mb-2">Alpha‑23 „Krayt“</h1>
-        <img src="https://i.imgur.com/EXVRzlm.png" alt="Logo" class="mx-auto w-48 mb-4" />
-      </header>
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Hauptinhalt -->
+      <main class="flex-1 lg:order-1 space-y-12">
+        <!-- Biografie -->
+        <section id="biografie">
+          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Biografie</h2>
+          <article class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">22 VSY – Schlacht um Kamino</h3>
+            <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
+              „Still und tödlich lauerte er im Verborgenen...“
+            </blockquote>
+            <p>Nach dem Erwachen aus der Stasis handelte Krayt sofort eigenständig…</p>
+          </article>
+          <article class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">22 VSY – Korriban Prime</h3>
+            <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
+              „Seit jenem Absturz auf Korriban Prime habe ich ihn nie wieder lachen hören.“
+            </blockquote>
+            <p>Während der Schlacht stürzte Krayt ab…</p>
+          </article>
+          <article>
+            <h3 class="text-xl font-semibold mb-2">21 VSY – Rhen Var</h3>
+            <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
+              „Ihre Taktik wäre effektiver in einer Holosimulation.“
+            </blockquote>
+            <p>Hier überzeugte er Skywalker von seiner Strategie…</p>
+          </article>
+        </section>
 
-      <!-- Steckbrief -->
-      <section id="steckbrief" class="mb-12">
-        <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Steckbrief</h2>
-        <div class="text-center mb-6">
-          <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23 Krayt" class="mx-auto w-48 rounded shadow" />
+        <!-- Beziehungen -->
+        <section id="beziehungen">
+          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Beziehungen</h2>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Kanzler Palpatine:</strong> Skepsis gegenüber politischer Kontrolle.</li>
+            <li><strong>Jedi‑Orden:</strong> Respekt, aber keine blinde Gefolgschaft.</li>
+            <li><strong>Anakin Skywalker:</strong> Respektvolle, wenn auch ideologisch gespannte Beziehung.</li>
+            <li><strong>Zivilisten:</strong> Pragmatismus über Empathie.</li>
+          </ul>
+        </section>
+
+        <!-- Persönlichkeit -->
+        <section id="persoenlichkeit">
+          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Persönlichkeit</h2>
+          <p>Krayt war ein mandalorianisch geprägter Taktiker, hinterfragte Befehle und war loyal zur Republik – nicht zum Imperium, dem er den Rücken kehrte.</p>
+        </section>
+
+        <!-- Schlusswort -->
+        <section id="schlusswort">
+          <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Schlusswort</h2>
+          <p>Vielen Dank! Skin abgesegnet von <strong>@Nymphix</strong>, Einreichung genehmigt durch <strong>@MaD‑MaX</strong>.</p>
+        </section>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="lg:w-80 lg:order-2 space-y-8">
+        <!-- Inhaltsverzeichnis -->
+        <div class="wiki-box">
+          <div class="wiki-header">
+            <h3 class="text-lg font-medium text-white">Inhaltsverzeichnis</h3>
+          </div>
+          <nav class="p-4 space-y-2">
+            <a href="#biografie" class="block hover:text-white">Biografie</a>
+            <a href="#beziehungen" class="block hover:text-white">Beziehungen</a>
+            <a href="#persoenlichkeit" class="block hover:text-white">Persönlichkeit</a>
+            <a href="#schlusswort" class="block hover:text-white">Schlusswort</a>
+          </nav>
         </div>
-        <table class="w-full text-left border-collapse mb-6">
-          <tbody>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Spezies</td><td> Mensch (Klon) </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Geschlecht</td><td> Männlich </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Haarfarbe</td><td> Schwarz / Grau </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Augenfarbe</td><td> Braun </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Körpergröße</td><td> 1,83 m </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Heimat</td><td> Kamino </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Stationierung</td><td> 4th Flotte </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Position</td><td> Alpha ARC Sergeant </td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Bewaffnung</td><td>Wester M5, Valken 38x, DC‑17 Silent (Dual), Wrist‑Rocket/Flame/Blaster, Jetpack</td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Fahrzeuge / Raumschiffe</td><td>LAAT/i (Witchcraft), ARC‑170 Sternjäger</td></tr>
-            <tr class="border-b border-gray-700"><td class="py-2 font-medium">Bekannte Einsätze</td><td>Kamino, Korriban Prime, Rhen Var</td></tr>
-          </tbody>
-        </table>
-      </section>
 
-      <!-- Biografie -->
-      <section id="biografie" class="mb-12">
-        <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Biografie</h2>
-        <article class="mb-8">
-          <h3 class="text-xl font-semibold mb-2">22 VSY – Schlacht um Kamino</h3>
-          <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
-            „Still und tödlich lauerte er im Verborgenen...“
-          </blockquote>
-          <p>Nach dem Erwachen aus der Stasis handelte Krayt sofort eigenständig …</p>
-        </article>
-        <article class="mb-8">
-          <h3 class="text-xl font-semibold mb-2">22 VSY – Korriban Prime</h3>
-          <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
-            „Seit jenem Absturz auf Korriban Prime habe ich ihn nie wieder lachen hören.“
-          </blockquote>
-          <p>Während der Schlacht stürzte Krayt ab …</p>
-        </article>
-        <article>
-          <h3 class="text-xl font-semibold mb-2">21 VSY – Rhen Var</h3>
-          <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-2">
-            „Ihre Taktik wäre effektiver in einer Holosimulation.“
-          </blockquote>
-          <p>Hier überzeugte Krayt Skywalker …</p>
-        </article>
-      </section>
-
-      <!-- Beziehungen -->
-      <section id="beziehungen" class="mb-12">
-        <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Beziehungen</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li><strong>Kanzler Palpatine:</strong> Skeptisch gegenüber politischer Kontrolle.</li>
-          <li><strong>Jedi‑Orden:</strong> Respekt, aber keine blinde Gefolgschaft.</li>
-          <li><strong>Anakin Skywalker:</strong> Respektvolle, wenn auch ideologisch gespannte Verbindung.</li>
-          <li><strong>Zivilisten:</strong> Pragmatismus über Empathie.</li>
-        </ul>
-      </section>
-
-      <!-- Persönlichkeit -->
-      <section id="persoenlichkeit" class="mb-12">
-        <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Persönlichkeit</h2>
-        <p>
-          Als Alpha‑ARC, mandalorianisch geprägt und von Jango Fett ausgebildet, war Krayt ein unabhängiger Taktiker.
-          Er hinterfragte Befehle, zeigte sich loyal zur Republik – aber nicht zum Imperium, dem er den Rücken kehrte.
-        </p>
-      </section>
-
-      <!-- Model -->
-      <section id="modellausgabe" class="mb-12">
-        <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Model</h2>
-        <div class="text-center">
-          <img src="https://i.imgur.com/CHuj739.png" alt="Model Alpha‑23" class="mx-auto w-64 rounded shadow" />
+        <!-- Steckbrief Box -->
+        <div class="wiki-box">
+          <div class="wiki-header">
+            <h3 class="text-lg font-medium text-white">Steckbrief</h3>
+          </div>
+          <div class="p-4 space-y-4">
+            <div class="text-center">
+              <img src="https://i.imgur.com/pq696KI.png" alt="Alpha‑23 Krayt" class="mx-auto w-40 rounded shadow"/>
+            </div>
+            <table class="w-full text-sm">
+              <tbody>
+                <tr><td class="font-medium">Spezies</td><td>Mensch (Klon)</td></tr>
+                <tr><td class="font-medium">Geschlecht</td><td>Männlich</td></tr>
+                <tr><td class="font-medium">Haarfarbe</td><td>Schwarz / Grau</td></tr>
+                <tr><td class="font-medium">Augenfarbe</td><td>Braun</td></tr>
+                <tr><td class="font-medium">Größe</td><td>1,83 m</td></tr>
+                <tr><td class="font-medium">Heimat</td><td>Kamino</td></tr>
+                <tr><td class="font-medium">Stationierung</td><td>4th Flotte</td></tr>
+                <tr><td class="font-medium">Position</td><td>Alpha ARC Sergeant</td></tr>
+                <tr><td class="font-medium">Bewaffnung</td><td>Wester M5, Valken 38x…</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p class="mt-4">Alle der Einheit zugewiesenen Attachments – unverändert.</p>
-      </section>
+      </aside>
+    </div>
 
-      <!-- Schlusswort -->
-      <section id="schlusswort">
-        <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Schlusswort</h2>
-        <p>Vielen Dank für eure Zeit! Der Skin wurde von <strong>@Nymphix</strong> abgesegnet, und die Einreichung durch <strong>@MaD‑MaX</strong> genehmigt.</p>
-      </section>
-
-      <!-- Footer -->
-      <footer class="mt-16 text-center text-sm text-gray-600">
-        © 2025 Bewerbung von Ares (Darius)
-      </footer>
-    </main>
+    <!-- Footer -->
+    <footer class="mt-12 text-center text-sm text-gray-600">
+      © 2025 – Bewerbung von Ares (Darius)
+    </footer>
   </div>
 </body>
 </html>
+
